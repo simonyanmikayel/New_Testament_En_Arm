@@ -43,10 +43,10 @@ namespace ThisApp.Views
             AppData = AppData.Instance;
             AppMenu = new AppMenu(MenuItem_Click);
 
-            var color = Windows.UI.Color.FromArgb(255, 0xFA, 0xED, 0xD0);
+            //var color = Windows.UI.Color.FromArgb(255, 0xFA, 0xED, 0xD0);
             //this.Background = new SolidColorBrush(color);
-            ContentPresenter.Background = new SolidColorBrush(color);
-            //MyTabView.BorderBrush = new SolidColorBrush(color);
+            //ContentPresenter.Background = new SolidColorBrush(color);
+            // /MyTabView.BorderBrush = new SolidColorBrush(color);
 
             // Hide default title bar.
             // https://docs.microsoft.com/en-us/windows/uwp/design/shell/title-bar
@@ -66,8 +66,8 @@ namespace ThisApp.Views
             ApplicationView.GetForCurrentView().VisibleBoundsChanged += this.MainPage_VisibleBoundsChanged;
 
             ApplicationViewTitleBar titleBar = ApplicationView.GetForCurrentView().TitleBar;
-            titleBar.ButtonBackgroundColor = Windows.UI.Colors.LightGray;
-            titleBar.ButtonInactiveBackgroundColor = Windows.UI.Colors.LightGray;
+            titleBar.ButtonBackgroundColor = Windows.UI.Colors.White;
+            titleBar.ButtonInactiveBackgroundColor = Windows.UI.Colors.White;
 
             int SelectedIndex = AppData.SelectedIndex;
             foreach (Chapter chapter in AppData.Chapters)

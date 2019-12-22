@@ -9,6 +9,7 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using ThisApp.Helpers;
 using ThisApp.Views;
+using Windows.UI.Xaml.Media;
 
 namespace ThisApp.Controls
 {
@@ -32,9 +33,11 @@ namespace ThisApp.Controls
             _chapter = chapter;
             this.InitializeComponent();
             var color = Windows.UI.Color.FromArgb(255, 0xFA, 0xED, 0xD0);
-            //this.Background = new SolidColorBrush(color);
-            //Rectangle.Fill = new SolidColorBrush(color);
-            MyWebView.DefaultBackgroundColor = color;
+            // /this.Background = new SolidColorBrush(color);
+            // /Rectangle.Fill = new SolidColorBrush(color);
+            //MyWebView.DefaultBackgroundColor = color;
+            MyPlayer.Background = new SolidColorBrush(color);
+
             MyWebView.Settings.IsJavaScriptEnabled = true; //enabled by default
 
             AppData.Instance.Settings.PropertyChanged += TabContent_PropertyChanged;
@@ -46,7 +49,6 @@ namespace ThisApp.Controls
 
             MyPlayer.MediaPlayer.CommandManager.NextReceived += CommandManager_NextReceived;
             MyPlayer.MediaPlayer.CommandManager.PreviousReceived += CommandManager_PreviousReceived;
-            //MyPlayer.MediaPlayer.CommandManager.Fast
             MyPlayer.MediaPlayer.PlaybackSession.NaturalDurationChanged += PlaybackSession_NaturalDurationChanged;
             MyPlayer.Source = MediaSource.CreateFromUri(new Uri(_chapter.BookSoundPath()));
             MyWebView.Navigate(new Uri(_chapter.BookTextPath()));
