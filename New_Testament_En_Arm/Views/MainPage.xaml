@@ -193,7 +193,7 @@
                                         Style="{StaticResource SettingsComboBoxStyle}"
                                         ItemsSource="{x:Bind AppData.Settings.ScrollModes}"
                                         SelectedIndex="{x:Bind AppData.Settings.ScrollMode, Converter={StaticResource EnumConverter}, Mode=TwoWay}"/>
-                                    <HyperlinkButton Content="View on GitHub" NavigateUri="http://www.microsoft.com" />
+                                    <HyperlinkButton Content="View on GitHub" NavigateUri="https://github.com/simonyanmikayel/New_Testament_En_Arm" />
                                 </StackPanel> 
                             </Flyout>
                         </Button.Flyout>
