@@ -1,0 +1,277 @@
+@font-face {
+    font-family: 'armfont';
+    font-weight: normal;
+    font-style: normal;
+    src: url('font/tahomaA.ttf') format('truetype');
+}
+
+* {
+    box-sizing: border-box;
+}
+
+:before, :after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'armfont',Tahoma,Arial,Helvetica,sans-serif;
+    background-color: #FAEDD0; /*color-schem*/
+    color: #4C3B26; /*color-schem*/
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.body-color-white {
+    background-color: #FFFFFF; /*color-schem*/
+    color: #000000; /*color-schem*/
+}
+
+button, html input[type=button], input[type=reset], input[type=submit] {
+    -webkit-appearance: button;
+    cursor: pointer;
+}
+button, select {
+    text-transform: none;
+}
+
+div, button, input, optgroup, select, textarea {
+    margin: 0;
+    padding: 0;
+    font: inherit;
+}
+
+div *:focus, button *:focus, input *:focus, optgroup *:focus, select *:focus, textarea *:focus {
+    /* Disable the browser focus highlighting. */
+    outline: none;
+}
+
+/* book header*/
+.header {
+    background-color: #DFD3BA; /*color-schem*/
+    color: #777777; /*color-schem*/
+    position: fixed;
+    margin: 0;
+    padding: 0;
+    top: 0;
+    left: 0;
+    width: auto;
+    height: 2.5em;
+    border: 0;
+    border-bottom: 1px solid #BCB39D; /*color-schem*/
+    background-clip: padding-box;
+    z-index: 9999981;
+    line-height: 1;
+    right: 0;
+}
+
+.header-color-white {
+    background-color: #EEEEEE; /*color-schem*/
+    color: #000000; /*color-schem*/
+    border-bottom: 1px solid #777777; /*color-schem*/
+}
+
+/* BOOK */
+.book_paragraph {
+    line-height: 1.2em;
+    overflow: hidden;
+}
+
+.book_paragraph > div {
+    padding: .5em 1em .5em 1em;
+    float: left;
+}
+
+@media screen and (max-width: 20em) {
+    .book_paragraph > div {
+        float: none;
+        width: 100%;
+    }
+}
+
+#content_div {
+    position: fixed;
+    top: 2.5em;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 0px;
+    overflow: auto;
+}
+
+.book_paragraph_engl {
+    visibility: visible;
+    width: 50%;
+}
+
+.book_paragraph_arm {
+    visibility: visible;
+    width: 50%;
+}
+
+.book_paragraph_engl.book_paragraph_single {
+    visibility: visible;
+    float: none;
+    width: 100%;
+}
+
+.book_paragraph_engl.book_paragraph_hidden {
+    visibility: hidden;
+    float: none;
+    height: 0;
+    width: 0;
+    padding: 0;
+    margin: 0;
+}
+
+.book_paragraph_arm.book_paragraph_single {
+    visibility: visible;
+    float: none;
+    width: 100%;
+}
+
+.book_paragraph_arm.book_paragraph_hidden {
+    visibility: hidden;
+    float: none;
+    height: 0;
+    width: 0;
+    padding: 0;
+    margin: 0;
+}
+
+.book_paragraph_header {
+    padding-bottom: 1em;
+    font-weight: bold;
+}
+
+.book_paragraph_num {
+    vertical-align: super;
+    font-size: smaller;
+    padding-right: 0.5em;
+    color: #777777;
+}
+
+/*-----------book controls--------------------*/
+
+#book_controls {
+    position: relative;
+    display: inline-block;
+    left: 4em;
+    border: none;
+    line-height: 1;
+}
+
+.jp-jplayer {
+    width: 0px;
+    height: 0px;
+}
+
+.jp-audio {
+    position: relative;
+    display: inline-block;
+    height: 2.5em;
+    /*border: 1px solid #89af29;*/
+}
+
+.header-button {
+    font-family: 'IcoMoon-Free' !important;
+    font-size: 2em;
+    color: #808080; /*color-schem*/
+    background: transparent;
+    display: inline-block;
+    border: none;
+    top: 0em;
+    left: 0em;
+    width: 1.5em;
+    height: 100%;
+    margin-left: .5em;
+    /*border: 1px solid #FF0000;*/
+}
+
+.header-button:hover {
+    background: linear-gradient(#FAEDD0, #DFD3BA), #DFD3BA ; /*color-schem*/
+    color: #777777; /*color-schem*/
+}
+
+.header-button-color-white:hover {
+    background: linear-gradient(#EEEEEE, #b9b9b9), #EEEEEE ;
+}
+
+/* Pause */
+#jp-pause-text {
+    display:none;
+}
+
+.jp-state-playing #jp-pause-text {
+    display: inline;
+}
+
+.jp-state-playing #jp-play-text {
+    display: none;
+}
+
+/*progress*/
+.jp-progress-holder {
+    position: absolute;
+    display: inline-block;
+    top: 0em;
+    left: 4.5em;
+    width: 10em;
+    /*border: 1px solid #f000ff;*/
+}
+
+.jp-seek-bar {
+    height: .5em;
+    background-color: #999999;
+    width: 100%;
+    cursor: pointer;
+    /*border: 1px solid #f000ff;*/
+}
+
+.jp-play-bar {
+    height: 100%;
+    width: 0px;
+    background-color: #777777;
+    /*border: 1px solid #00f800;*/
+}
+
+.jp-time-holder {
+    position: relative;
+}
+
+.jp-current-time,
+.jp-duration {
+    position: absolute;
+    font-size: .6em;
+    font-style: oblique;
+    margin: .2em 0 .1em 0;
+}
+
+.jp-current-time {
+    left: 0;
+    cursor: default;
+}
+
+.jp-duration {
+    right: 0;
+    text-align: right;
+    cursor: pointer;
+}
+
+#jp-book-caption {
+    white-space: nowrap;
+    overflow: hidden;
+    text-align: center;
+    font-size: .8em;
+    margin: .1em 0 .2em 0;
+}
+
+/* The seeking class is added/removed inside jPlayer */
+div.jp-seeking-bg {
+    /*background: url("../image/jplayer.blue.monday.seeking.gif");*/
+}
+
+/* Hide player in the page */
+div.header-id {
+    visibility: hiden;
+}

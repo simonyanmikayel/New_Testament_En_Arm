@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='utf-8'>
+    <title>Holy Bible</title>
+    <link href='../../style/book.css' rel='stylesheet' type='text/css' >
+    <script src='../../script/book.js' type='text/javascript'></script>
+</head>
+<body onload="onLoaded()">
+
+<input type='hidden' id='book_index' value='0,25'>
+<input type='hidden' id='sound_pos' value='2038,22021,31347,42632,52741,65123,82442,91690,107442,129541,152424,170449,184085,201169,222171,247876,268878,280712,296464,312999,342622,373656,400692,432980,464718,483056,508526,528823,543086,568163,587285,608993,631954,643082,667455,692140,712046,734929,748016,758204,783673,809535,829283,854753,883278,909140,926224'>
+
+<div id='content_div'>
+    <div  id='book_paragraph_0' onclick='paragraph_onclick(0)' class='book_paragraph'>
+        <div class='book_paragraph_engl'>
+                <span class='book_paragraph_num'>25:1</span>"Then the Kingdom of Heaven will be like ten virgins, who took their lamps, and went out to meet the bridegroom. 
+        </div>
+        <div class='book_paragraph_arm'>
+                <span class='book_paragraph_num'>25:1</span>«Այն ժամանակ երկնքի արքայութիւնը պիտի նմանեցուի տասը կոյսերի, որոնք իրենց լապտերներն առած՝ փեսային եւ հարսին ընդառաջ ելան: 
+        </div>
+    </div>
+    <div  id='book_paragraph_1' onclick='paragraph_onclick(1)' class='book_paragraph'>
+        <div class='book_paragraph_engl'>
+                <span class='book_paragraph_num'>25:2</span>Five of them were foolish, and five were wise. 
+        </div>
+        <div class='book_paragraph_arm'>
+                <span class='book_paragraph_num'>25:2</span>Նրանցից հինգը յիմար էին, իսկ հինգը՝ իմաստուն: 
+        </div>
+    </div>
+    <div  id='book_paragraph_2' onclick='paragraph_onclick(2)' class='book_paragraph'>
+        <div class='book_paragraph_engl'>
+                <span class='book_paragraph_num'>25:3</span>Those who were foolish, when they took their lamps, took no oil with them, 
+        </div>
+        <div class='book_paragraph_arm'>
+                <span class='book_paragraph_num'>25:3</span>Յիմարները լապտերներն առան, բայց իրենց հետ ձէթ չվերցրին: 
+        </div>
+    </div>
+    <div  id='book_paragraph_3' onclick='paragraph_onclick(3)' class='book_paragraph'>
+        <div class='book_paragraph_engl'>
+                <span class='book_paragraph_num'>25:4</span>but the wise took oil in their vessels with their lamps. 
+        </div>
+        <div class='book_paragraph_arm'>
+                <span class='book_paragraph_num'>25:4</span>Իսկ իմաստունները իրենց լապտերների հետ միասին ամաններով ձէթ վերցրին: 
+        </div>
+    </div>
+    <div  id='book_paragraph_4' onclick='paragraph_onclick(4)' class='book_paragraph'>
+        <div class='book_paragraph_engl'>
+                <span class='book_paragraph_num'>25:5</span>Now while the bridegroom delayed, they all slumbered and slept. 
+        </div>
+        <div class='book_paragraph_arm'>
+                <span class='book_paragraph_num'>25:5</span>Եւ երբ փեսան ուշացաւ, ամէնքն էլ նիրհեցին եւ քուն մտան: 
+        </div>
+    </div>
+    <div  id='book_paragraph_5' onclick='paragraph_onclick(5)' class='book_paragraph'>
+        <div class='book_paragraph_engl'>
+                <span class='book_paragraph_num'>25:6</span>But at midnight there was a cry, 'Behold! The bridegroom is coming! Come out to meet him!' 
+        </div>
+        <div class='book_paragraph_arm'>
+                <span class='book_paragraph_num'>25:6</span>Եւ գիշերուայ մէջ ձայն լսուեց՝ ահա՛ փեսան գալիս է, նրան ընդառա՛ջ ելէք: 
+        </div>
+    </div>
+    <div  id='book_paragraph_6' onclick='paragraph_onclick(6)' class='book_paragraph'>
+        <div class='book_paragraph_engl'>
+                <span class='book_paragraph_num'>25:7</span>Then all those virgins arose, and trimmed their lamps. 
+        </div>
+        <div class='book_paragraph_arm'>
+                <span class='book_paragraph_num'>25:7</span>Այն ժամանակ բոլոր կոյսերը վեր կացան եւ իրենց լապտերները կարգի բերեցին: 
+        </div>
+    </div>
+    <div  id='book_paragraph_7' onclick='paragraph_onclick(7)' class='book_paragraph'>
+        <div class='book_paragraph_engl'>
+                <span class='book_paragraph_num'>25:8</span>The foolish said to the wise, 'Give us some of your oil, for our lamps are going out.' 
+        </div>
+        <div class='book_paragraph_arm'>
+                <span class='book_paragraph_num'>25:8</span>Յիմարները իմաստուններին ասացին. "Ձեր այդ իւղից տուէ՛ք մեզ, որովհետեւ ահա մեր լապտերները հանգչում են": 
+        </div>
+    </div>
+    <div  id='book_paragraph_8' onclick='paragraph_onclick(8)' class='book_paragraph'>
+        <div class='book_paragraph_engl'>
+                <span class='book_paragraph_num'>25:9</span>But the wise answered, saying, 'What if there isn't enough for us and you? You go rather to those who sell, and buy for yourselves.' 
+        </div>
+        <div class='book_paragraph_arm'>
+                <span class='book_paragraph_num'>25:9</span>Իմաստունները պատասխան տուեցին եւ ասացին. "Գուցէ թէ՛ մեզ եւ թէ՛ ձեզ չբաւականացնի, ուստի գնացէ՛ք վաճառականների մօտ եւ ձեզ համար գնեցէ՛ք": 
+        </div>
+    </div>
+    <div  id='book_paragraph_9' onclick='paragraph_onclick(9)' class='book_paragraph'>
+        <div class='book_paragraph_engl'>
+                <span class='book_paragraph_num'>25:10</span>While they went away to buy, the bridegroom came, and those who were ready went in with him to the marriage feast, and the door was shut. 
+        </div>
+        <div class='book_paragraph_arm'>
+                <span class='book_paragraph_num'>25:10</span>Երբ նրանք գնացին, որ գնեն, փեսան եկաւ, եւ ովքեր պատրաստ էին, նրա հետ հարսանիքի սրահը մտան, ու դուռը փակուեց: 
+        </div>
+    </div>
+    <div  id='book_paragraph_10' onclick='paragraph_onclick(10)' class='book_paragraph'>
+        <div class='book_paragraph_engl'>
+                <span class='book_paragraph_num'>25:11</span>Afterward the other virgins also came, saying, 'Lord, Lord, open to us.' 
+        </div>
+        <div class='book_paragraph_arm'>
+                <span class='book_paragraph_num'>25:11</span>Յետոյ եկան միւս կոյսերն էլ ու ասացին. "Տէ՛ր, տէ՛ր, բա՛ց արա": 
+        </div>
+    </div>
+    <div  id='book_paragraph_11' onclick='paragraph_onclick(11)' class='book_paragraph'>
+        <div class='book_paragraph_engl'>
+                <span class='book_paragraph_num'>25:12</span>But he answered, 'Most assuredly I tell you, I don't know you.' 
+        </div>
+        <div class='book_paragraph_arm'>
+                <span class='book_paragraph_num'>25:12</span>Նա պատասխան տուեց ու ասաց. "Ճշմարիտ եմ ասում ձեզ, որ ձեզ չեմ ճանաչում": 
+        </div>
+    </div>
+    <div  id='book_paragraph_12' onclick='paragraph_onclick(12)' class='book_paragraph'>
+        <div class='book_paragraph_engl'>
+                <span class='book_paragraph_num'>25:13</span>Watch therefore, for you don't know the day nor the hour in which the Son of Man is coming. 
+        </div>
+        <div class='book_paragraph_arm'>
+                <span class='book_paragraph_num'>25:13</span>Արթո՛ւն կացէք, որովհետեւ չգիտէք ո՛չ օրը եւ ո՛չ էլ ժամը»:
+        </div>
+    </div>
+    <div  id='book_paragraph_13' onclick='paragraph_onclick(13)' class='book_paragraph'>
+        <div class='book_paragraph_engl'>
+                <span class='book_paragraph_num'>25:14</span>"For it is like a man, going into another country, who called his own servants, and entrusted his goods to them. 
+        </div>
+        <div class='book_paragraph_arm'>
+                <span class='book_paragraph_num'>25:14</span>«Թէ ինչպէս մի մարդ, հեռու երկիր գնալիս, կանչեց իր ծառաներին եւ իր ունեցուածքը նրանց տուեց. 
+        </div>
+    </div>
+    <div  id='book_paragraph_14' onclick='paragraph_onclick(14)' class='book_paragraph'>
+        <div class='book_paragraph_engl'>
+                <span class='book_paragraph_num'>25:15</span>To one he gave five talents, to another two, to another one; to each according to his own ability. Then he went on his journey. 
+        </div>
+        <div class='book_paragraph_arm'>
+                <span class='book_paragraph_num'>25:15</span>մէկին տուեց հինգ քանքար, միւսին՝ երկու եւ մի ուրիշին՝ մէկ. իւրաքանչիւրին ըստ իր կարողութեան. եւ գնաց: 
+        </div>
+    </div>
+    <div  id='book_paragraph_15' onclick='paragraph_onclick(15)' class='book_paragraph'>
+        <div class='book_paragraph_engl'>
+                <span class='book_paragraph_num'>25:16</span>Immediately he who received the five talents went and traded with them, and made another five talents. 
+        </div>
+        <div class='book_paragraph_arm'>
+                <span class='book_paragraph_num'>25:16</span>Ով հինգն առաւ, իսկոյն գնաց, դրանով գործ արեց եւ հինգ եւս շահեց: 
+        </div>
+    </div>
+    <div  id='book_paragraph_16' onclick='paragraph_onclick(16)' class='book_paragraph'>
+        <div class='book_paragraph_engl'>
+                <span class='book_paragraph_num'>25:17</span>In like manner he also who got the two gained another two. 
+        </div>
+        <div class='book_paragraph_arm'>
+                <span class='book_paragraph_num'>25:17</span>Նոյնպէս նա էլ, որ երկուսն առաւ, երկու եւս շահեց: 
+        </div>
+    </div>
+    <div  id='book_paragraph_17' onclick='paragraph_onclick(17)' class='book_paragraph'>
+        <div class='book_paragraph_engl'>
+                <span class='book_paragraph_num'>25:18</span>But he who received the one went away and dug in the earth, and hid his lord's money. 
+        </div>
+        <div class='book_paragraph_arm'>
+                <span class='book_paragraph_num'>25:18</span>Իսկ ով մէկն առաւ, գնաց հողը փորեց եւ իր տիրոջ դրամը թաքցրեց: 
+        </div>
+    </div>
+    <div  id='book_paragraph_18' onclick='paragraph_onclick(18)' class='book_paragraph'>
+        <div class='book_paragraph_engl'>
+                <span class='book_paragraph_num'>25:19</span>"Now after a long time the lord of those servants came, and reconciled accounts with them. 
+        </div>
+        <div class='book_paragraph_arm'>
+                <span class='book_paragraph_num'>25:19</span>Շատ ժամանակ անց, այն ծառաների տէրը եկաւ եւ նրանց հետ հաշիւ տեսաւ: 
+        </div>
+    </div>
+    <div  id='book_paragraph_19' onclick='paragraph_onclick(19)' class='book_paragraph'>
+        <div class='book_paragraph_engl'>
+                <span class='book_paragraph_num'>25:20</span>He who received the five talents came and brought another five talents, saying, 'Lord, you delivered to me five talents. Behold, I have gained another five talents besides them.' 
+        </div>
+        <div class='book_paragraph_arm'>
+                <span class='book_paragraph_num'>25:20</span>Ով հինգ քանքար էր առել, մօտենալով՝ հինգ քանքար եւս տուեց ու ասաց. "Տէ՛ր, հինգ քանքար տուիր ինձ. արդ, ահաւասիկ վրան հինգ քանքար եւս շահեցի": 
+        </div>
+    </div>
+    <div  id='book_paragraph_20' onclick='paragraph_onclick(20)' class='book_paragraph'>
+        <div class='book_paragraph_engl'>
+                <span class='book_paragraph_num'>25:21</span>"His lord said to him, 'Well done, good and faithful servant. You have been faithful over a few things, I will set you over many things. Enter into the joy of your lord.' 
+        </div>
+        <div class='book_paragraph_arm'>
+                <span class='book_paragraph_num'>25:21</span>Իր տէրը նրան ասաց. "Շատ լավ, բարի՛ եւ հաւատարի՛մ ծառայ, որովհետեւ այդ քչի մէջ հաւատարիմ եղար, շատի վրայ կը կարգեմ քեզ. մտի՛ր քո տիրոջ ուրախութեան մէջ": 
+        </div>
+    </div>
+    <div  id='book_paragraph_21' onclick='paragraph_onclick(21)' class='book_paragraph'>
+        <div class='book_paragraph_engl'>
+                <span class='book_paragraph_num'>25:22</span>"He also who got the two talents came and said, 'Lord, you delivered to me two talents. Behold, I have gained another two talents besides them.' 
+        </div>
+        <div class='book_paragraph_arm'>
+                <span class='book_paragraph_num'>25:22</span>Ով երկու քանքարն էր առել, նա էլ մօտեցաւ ու ասաց. "Տէ՛ր, ինձ երկու քանքար տուիր, ահաւասիկ երկու այլ քանքար եւս, որ դրանց վրայ շահեցի": 
+        </div>
+    </div>
+    <div  id='book_paragraph_22' onclick='paragraph_onclick(22)' class='book_paragraph'>
+        <div class='book_paragraph_engl'>
+                <span class='book_paragraph_num'>25:23</span>"His lord said to him, 'Well done, good and faithful servant. You have been faithful over a few things, I will set you over many things. Enter into the joy of your lord.' 
+        </div>
+        <div class='book_paragraph_arm'>
+                <span class='book_paragraph_num'>25:23</span>Իր տէրը նրան ասաց. "Շատ լավ, բարի՛ եւ հաւատարի՛մ ծառայ, որովհետեւ այդ քչի մէջ հաւատարիմ եղար, շատի վրայ կը կարգեմ քեզ. մտի՛ր քո տիրոջ ուրախութեան մէջ": 
+        </div>
+    </div>
+    <div  id='book_paragraph_23' onclick='paragraph_onclick(23)' class='book_paragraph'>
+        <div class='book_paragraph_engl'>
+                <span class='book_paragraph_num'>25:24</span>"He also who had received the one talent came and said, 'Lord, I knew you that you are a hard man, reaping where you did not sow, and gathering where you did not scatter. 
+        </div>
+        <div class='book_paragraph_arm'>
+                <span class='book_paragraph_num'>25:24</span>Մօտեցաւ նաեւ նա, որ մէկ քանքար էր առել, ու ասաց. "Տէ՛ր, գիտէի, որ դու մի խիստ մարդ ես, հնձում ես, ինչ որ չես սերմանել, եւ հաւաքում ես այնտեղից, ուր չես սփռել. 
+        </div>
+    </div>
+    <div  id='book_paragraph_24' onclick='paragraph_onclick(24)' class='book_paragraph'>
+        <div class='book_paragraph_engl'>
+                <span class='book_paragraph_num'>25:25</span>I was afraid, and went away and hid your talent in the earth. Behold, you have what is yours.' 
+        </div>
+        <div class='book_paragraph_arm'>
+                <span class='book_paragraph_num'>25:25</span>վախեցայ. գնացի եւ թաքցրի քո այդ քանքարը հողի մէջ: Արդ, ահա՛ւասիկ, քոնը՝ քեզ": 
+        </div>
+    </div>
+    <div  id='book_paragraph_25' onclick='paragraph_onclick(25)' class='book_paragraph'>
+        <div class='book_paragraph_engl'>
+                <span class='book_paragraph_num'>25:26</span>"But his lord answered him, 'You wicked and slothful servant. You knew that I reap where I didn't sow, and gather where I didn't scatter. 
+        </div>
+        <div class='book_paragraph_arm'>
+                <span class='book_paragraph_num'>25:26</span>Տէրը պատասխան տուեց եւ ասաց նրան. "Չա՛ր եւ ծո՛յլ ծառայ, գիտէիր, որ հնձում եմ, ուր չեմ սերմանել, եւ հաւաքում այնտեղից, ուր չեմ սփռել. 
+        </div>
+    </div>
+    <div  id='book_paragraph_26' onclick='paragraph_onclick(26)' class='book_paragraph'>
+        <div class='book_paragraph_engl'>
+                <span class='book_paragraph_num'>25:27</span>You ought therefore to have deposited my money with the bankers, and at my coming I should have received back my own with interest. 
+        </div>
+        <div class='book_paragraph_arm'>
+                <span class='book_paragraph_num'>25:27</span>դու պէտք է իմ այդ դրամը սեղանավորների մօտ դնէիր, եւ ես, գալով, տոկոսով միասին պահանջէի այն, ինչ որ իմն է: 
+        </div>
+    </div>
+    <div  id='book_paragraph_27' onclick='paragraph_onclick(27)' class='book_paragraph'>
+        <div class='book_paragraph_engl'>
+                <span class='book_paragraph_num'>25:28</span>Take away therefore the talent from him, and give it to him who has the ten talents. 
+        </div>
+        <div class='book_paragraph_arm'>
+                <span class='book_paragraph_num'>25:28</span>Արդ, դրանից առէ՛ք այդ քանքարը եւ տուէ՛ք նրան, ով տասը քանքար ունի. 
+        </div>
+    </div>
+    <div  id='book_paragraph_28' onclick='paragraph_onclick(28)' class='book_paragraph'>
+        <div class='book_paragraph_engl'>
+                <span class='book_paragraph_num'>25:29</span>For to everyone who has will be given, and he will have abundance, but from him who has not, even that which he has will be taken away. 
+        </div>
+        <div class='book_paragraph_arm'>
+                <span class='book_paragraph_num'>25:29</span>քանի որ՝ ով ունի, նրան պիտի տրուի եւ աւելացուի, իսկ ով չունի, նրանից ունեցածն էլ պիտի վերցուի: 
+        </div>
+    </div>
+    <div  id='book_paragraph_29' onclick='paragraph_onclick(29)' class='book_paragraph'>
+        <div class='book_paragraph_engl'>
+                <span class='book_paragraph_num'>25:30</span>Throw out the unprofitable servant into the outer darkness, where there will be weeping and gnashing of teeth.' 
+        </div>
+        <div class='book_paragraph_arm'>
+                <span class='book_paragraph_num'>25:30</span>Իսկ այդ անպիտան ծառային հանեցէ՛ք արտաքին խաւարը. այնտեղ կը լինի լաց եւ ատամների կրճտում"»:
+        </div>
+    </div>
+    <div  id='book_paragraph_30' onclick='paragraph_onclick(30)' class='book_paragraph'>
+        <div class='book_paragraph_engl'>
+                <span class='book_paragraph_num'>25:31</span>"But when the Son of Man comes in his glory, and all the holy angels with him, then he will sit on the throne of his glory. 
+        </div>
+        <div class='book_paragraph_arm'>
+                <span class='book_paragraph_num'>25:31</span>«Արդ, երբ որ մարդու Որդին գայ իր փառքով եւ բոլոր հրեշտակները՝ իր հետ, այն ժամանակ նա պիտի նստի իր փառքի աթոռի վրայ, 
+        </div>
+    </div>
+    <div  id='book_paragraph_31' onclick='paragraph_onclick(31)' class='book_paragraph'>
+        <div class='book_paragraph_engl'>
+                <span class='book_paragraph_num'>25:32</span>Before him all the nations will be gathered, and he will separate them one from another, as a shepherd separates the sheep from the goats. 
+        </div>
+        <div class='book_paragraph_arm'>
+                <span class='book_paragraph_num'>25:32</span>ու նրա առաջ պիտի հաւաքուեն բոլոր ազգերը, եւ նա նրանց միմեանցից պիտի զատի, ինչպէս մի հովիւ, որ զատում է ոչխարները այծերից: 
+        </div>
+    </div>
+    <div  id='book_paragraph_32' onclick='paragraph_onclick(32)' class='book_paragraph'>
+        <div class='book_paragraph_engl'>
+                <span class='book_paragraph_num'>25:33</span>He will set the sheep on his right hand, but the goats on the left. 
+        </div>
+        <div class='book_paragraph_arm'>
+                <span class='book_paragraph_num'>25:33</span>Եւ ոչխարները իր աջին պիտի կանգնեցնի, իսկ այծերը՝ ձախին: 
+        </div>
+    </div>
+    <div  id='book_paragraph_33' onclick='paragraph_onclick(33)' class='book_paragraph'>
+        <div class='book_paragraph_engl'>
+                <span class='book_paragraph_num'>25:34</span>Then the King will tell those on his right hand, 'Come, blessed of my Father, inherit the kingdom prepared for you from the foundation of the world; 
+        </div>
+        <div class='book_paragraph_arm'>
+                <span class='book_paragraph_num'>25:34</span>Այն ժամանակ թագաւորը պիտի ասի նրանց, որ իր աջին են. "Եկէ՛ք, իմ Հօր օրհնեալնե՛ր, ժառանգեցէ՛ք աշխարհի սկզբից ձեզ համար պատրաստուած արքայութիւնը. 
+        </div>
+    </div>
+    <div  id='book_paragraph_34' onclick='paragraph_onclick(34)' class='book_paragraph'>
+        <div class='book_paragraph_engl'>
+                <span class='book_paragraph_num'>25:35</span>for I was hungry, and you gave me food to eat; I was thirsty, and you gave me drink; I was a stranger, and you took me in; 
+        </div>
+        <div class='book_paragraph_arm'>
+                <span class='book_paragraph_num'>25:35</span>որովհետեւ քաղցած էի, եւ ինձ ուտելիք տուիք, ծարաւ էի, եւ ինձ ջուր տուիք՝ խմելու. օտար էի, եւ ինձ ձեր մէջ առաք, 
+        </div>
+    </div>
+    <div  id='book_paragraph_35' onclick='paragraph_onclick(35)' class='book_paragraph'>
+        <div class='book_paragraph_engl'>
+                <span class='book_paragraph_num'>25:36</span>naked, and you clothed me; I was sick, and you visited me; I was in prison, and you came to me.' 
+        </div>
+        <div class='book_paragraph_arm'>
+                <span class='book_paragraph_num'>25:36</span>մերկ էի, եւ ինձ հագցրիք, հիւանդ էի, եւ ինձ տեսնելու եկաք, բանտում էի, եւ ինձ մօտ եկաք": 
+        </div>
+    </div>
+    <div  id='book_paragraph_36' onclick='paragraph_onclick(36)' class='book_paragraph'>
+        <div class='book_paragraph_engl'>
+                <span class='book_paragraph_num'>25:37</span>"Then the righteous will answer him, saying, 'Lord, when did we see you hungry, and feed you; or thirsty, and give you a drink? 
+        </div>
+        <div class='book_paragraph_arm'>
+                <span class='book_paragraph_num'>25:37</span>Այն ժամանակ արդարները պիտի պատասխանեն նրան ու ասեն. "Տէ՛ր, ե՞րբ տեսանք քեզ քաղցած ու կերակրեցինք, կամ՝ ծարաւ եւ ջուր տուեցինք. 
+        </div>
+    </div>
+    <div  id='book_paragraph_37' onclick='paragraph_onclick(37)' class='book_paragraph'>
+        <div class='book_paragraph_engl'>
+                <span class='book_paragraph_num'>25:38</span>When did we see you as a stranger, and take you in; or naked, and clothe you? 
+        </div>
+        <div class='book_paragraph_arm'>
+                <span class='book_paragraph_num'>25:38</span>ե՞րբ տեսանք քեզ օտար եւ մեր մէջ առանք, կամ՝ մերկ եւ հագցրինք. 
+        </div>
+    </div>
+    <div  id='book_paragraph_38' onclick='paragraph_onclick(38)' class='book_paragraph'>
+        <div class='book_paragraph_engl'>
+                <span class='book_paragraph_num'>25:39</span>When did we see you sick, or in prison, and come to you?' 
+        </div>
+        <div class='book_paragraph_arm'>
+                <span class='book_paragraph_num'>25:39</span>ե՞րբ տեսանք քեզ հիւանդ կամ բանտի մէջ ու եկանք քեզ մօտ": 
+        </div>
+    </div>
+    <div  id='book_paragraph_39' onclick='paragraph_onclick(39)' class='book_paragraph'>
+        <div class='book_paragraph_engl'>
+                <span class='book_paragraph_num'>25:40</span>"The King will answer them, 'Most assuredly I tell you, inasmuch as you did it to one of the least of these my brothers, you did it to me.' 
+        </div>
+        <div class='book_paragraph_arm'>
+                <span class='book_paragraph_num'>25:40</span>Թագաւորը պիտի պատասխանի ու ասի նրանց. "Ճշմարիտ եմ ասում ձեզ, քանի որ իմ այս փոքր եղբայրներից մէկին արեցիք այդ՝ ի՛նձ համար արեցիք": 
+        </div>
+    </div>
+    <div  id='book_paragraph_40' onclick='paragraph_onclick(40)' class='book_paragraph'>
+        <div class='book_paragraph_engl'>
+                <span class='book_paragraph_num'>25:41</span>Then he will say also to those on the left hand, 'Depart from me, you cursed, into the eternal fire which is prepared for the devil and his angels; 
+        </div>
+        <div class='book_paragraph_arm'>
+                <span class='book_paragraph_num'>25:41</span>Այն ժամանակ նա պիտի ասի նրանց, որ իր ձախին են. "Անիծեալնե՛ր, գնացէ՛ք ինձնից յաւիտենական կրակը, որ պատրաստուած է սատանայի եւ իր հրեշտակների համար. 
+        </div>
+    </div>
+    <div  id='book_paragraph_41' onclick='paragraph_onclick(41)' class='book_paragraph'>
+        <div class='book_paragraph_engl'>
+                <span class='book_paragraph_num'>25:42</span>for I was hungry, and you didn't give me food to eat; I was thirsty, and you gave me no drink; 
+        </div>
+        <div class='book_paragraph_arm'>
+                <span class='book_paragraph_num'>25:42</span>որովհետեւ քաղցած էի, եւ ինձ ուտելիք չտուիք, ծարաւ էի, եւ ինձ ջուր չտուիք, 
+        </div>
+    </div>
+    <div  id='book_paragraph_42' onclick='paragraph_onclick(42)' class='book_paragraph'>
+        <div class='book_paragraph_engl'>
+                <span class='book_paragraph_num'>25:43</span>I was a stranger, and you didn't take me in; naked, and you didn't clothe me; sick, and in prison, and you didn't visit me.' 
+        </div>
+        <div class='book_paragraph_arm'>
+                <span class='book_paragraph_num'>25:43</span>օտար էի, եւ ինձ ձեր մէջ չառաք, մերկ էի, եւ ինձ չհագցրիք, հիւանդ էի ու բանտի մէջ, եւ ինձ տեսնելու չեկաք": 
+        </div>
+    </div>
+    <div  id='book_paragraph_43' onclick='paragraph_onclick(43)' class='book_paragraph'>
+        <div class='book_paragraph_engl'>
+                <span class='book_paragraph_num'>25:44</span>"Then they will also answer, saying, 'Lord, when did we see you hungry, or thirsty, or a stranger, or naked, or sick, or in prison, and didn't help you?' 
+        </div>
+        <div class='book_paragraph_arm'>
+                <span class='book_paragraph_num'>25:44</span>Այն ժամանակ նրանք էլ պիտի պատասխանեն ու ասեն. "Տէ՛ր, ե՞րբ տեսանք քեզ քաղցած, կամ ծարաւ, կամ օտար, կամ մերկ, կամ հիւանդ, կամ բանտի մէջ ու քեզ չծառայեցինք": 
+        </div>
+    </div>
+    <div  id='book_paragraph_44' onclick='paragraph_onclick(44)' class='book_paragraph'>
+        <div class='book_paragraph_engl'>
+                <span class='book_paragraph_num'>25:45</span>"Then he will answer them, saying, 'Most assuredly I tell you, inasmuch as you didn't do it to one of the least of these, you didn't do it to me.' 
+        </div>
+        <div class='book_paragraph_arm'>
+                <span class='book_paragraph_num'>25:45</span>Այն ժամանակ պիտի պատասխանի նրանց ու ասի. "Ճշմարիտ եմ ասում ձեզ, որովհետեւ այս փոքրերից մէկին ա՛յդ չարեցիք, ինձ համար էլ չարեցիք":
+        </div>
+    </div>
+    <div  id='book_paragraph_45' onclick='paragraph_onclick(45)' class='book_paragraph'>
+        <div class='book_paragraph_engl'>
+                <span class='book_paragraph_num'>25:46</span>These will go away into eternal punishment, but the righteous into eternal life."
+        </div>
+        <div class='book_paragraph_arm'>
+                <span class='book_paragraph_num'>25:46</span>Եւ նրանք պիտի գնան դէպի յաւիտենական տանջանքները, իսկ արդարները՝ յաւիտենական կեանք»:
+        </div>
+    </div>
+</div>
+</body>

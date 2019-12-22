@@ -1,0 +1,741 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProjectGuid>{DAF0C363-8929-4121-92A1-9AD4450EA0D3}</ProjectGuid>
+    <OutputType>AppContainerExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>New_Testament_En_Arm</RootNamespace>
+    <AssemblyName>New_Testament_En_Arm</AssemblyName>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
+    <TargetPlatformVersion Condition=" '$(TargetPlatformVersion)' == '' ">10.0.18362.0</TargetPlatformVersion>
+    <TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
+    <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WindowsXamlEnableOverview>true</WindowsXamlEnableOverview>
+    <AppxPackageSigningEnabled>True</AppxPackageSigningEnabled>
+    <GenerateAppInstallerFile>False</GenerateAppInstallerFile>
+    <AppxPackageSigningTimestampDigestAlgorithm>SHA256</AppxPackageSigningTimestampDigestAlgorithm>
+    <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
+    <GenerateTestArtifacts>True</GenerateTestArtifacts>
+    <AppxBundle>Always</AppxBundle>
+    <AppxBundlePlatforms>x64</AppxBundlePlatforms>
+    <HoursBetweenUpdateChecks>0</HoursBetweenUpdateChecks>
+    <PackageCertificateThumbprint>5A842108050D1EC731AB1AE41AACD91511608881</PackageCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\ARM\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM'">
+    <OutputPath>bin\ARM\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\ARM64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>ARM64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM64'">
+    <OutputPath>bin\ARM64\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>ARM64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions\ObjectExtensions.cs" />
+    <Compile Include="Extensions\StringExtensions.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="Helpers\Dbg.cs" />
+    <Compile Include="Helpers\EnumAndNumberConverter.cs" />
+    <Compile Include="Helpers\LocalSettings.cs" />
+    <Compile Include="Helpers\TickEvent.cs" />
+    <Compile Include="Models\AppData.cs" />
+    <Compile Include="Models\AppMenu.cs" />
+    <Compile Include="Models\Book.cs" />
+    <Compile Include="Models\Chapter.cs" />
+    <Compile Include="Models\Settings.cs" />
+    <Compile Include="Models\TabItem.cs" />
+    <Compile Include="Views\MainPage.xaml.cs">
+      <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Controls\TabContent.xaml.cs">
+      <DependentUpon>TabContent.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <AppxManifest Include="Package.appxmanifest">
+      <SubType>Designer</SubType>
+    </AppxManifest>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\1Cor\1Cor1.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\1Cor\1Cor10.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\1Cor\1Cor11.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\1Cor\1Cor12.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\1Cor\1Cor13.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\1Cor\1Cor14.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\1Cor\1Cor15.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\1Cor\1Cor16.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\1Cor\1Cor2.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\1Cor\1Cor3.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\1Cor\1Cor4.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\1Cor\1Cor5.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\1Cor\1Cor6.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\1Cor\1Cor7.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\1Cor\1Cor8.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\1Cor\1Cor9.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\1John\1John1.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\1John\1John2.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\1John\1John3.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\1John\1John4.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\1John\1John5.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\1Peter\1Peter1.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\1Peter\1Peter2.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\1Peter\1Peter3.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\1Peter\1Peter4.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\1Peter\1Peter5.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\1Thess\1Thess1.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\1Thess\1Thess2.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\1Thess\1Thess3.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\1Thess\1Thess4.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\1Thess\1Thess5.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\1Tim\1Tim1.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\1Tim\1Tim2.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\1Tim\1Tim3.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\1Tim\1Tim4.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\1Tim\1Tim5.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\1Tim\1Tim6.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\2Cor\2Cor1.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\2Cor\2Cor10.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\2Cor\2Cor11.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\2Cor\2Cor12.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\2Cor\2Cor13.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\2Cor\2Cor2.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\2Cor\2Cor3.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\2Cor\2Cor4.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\2Cor\2Cor5.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\2Cor\2Cor6.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\2Cor\2Cor7.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\2Cor\2Cor8.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\2Cor\2Cor9.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\2John\2John.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\2Peter\2Peter1.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\2Peter\2Peter2.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\2Peter\2Peter3.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\2Thess\2Thess1.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\2Thess\2Thess2.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\2Thess\2Thess3.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\2Tim\2Tim1.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\2Tim\2Tim2.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\2Tim\2Tim3.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\2Tim\2Tim4.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\3John\3John.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Acts\Acts1.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Acts\Acts10.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Acts\Acts11.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Acts\Acts12.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Acts\Acts13.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Acts\Acts14.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Acts\Acts15.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Acts\Acts16.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Acts\Acts17.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Acts\Acts18.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Acts\Acts19.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Acts\Acts2.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Acts\Acts20.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Acts\Acts21.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Acts\Acts22.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Acts\Acts23.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Acts\Acts24.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Acts\Acts25.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Acts\Acts26.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Acts\Acts27.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Acts\Acts28.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Acts\Acts3.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Acts\Acts4.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Acts\Acts5.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Acts\Acts6.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Acts\Acts7.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Acts\Acts8.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Acts\Acts9.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Col\Col1.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Col\Col2.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Col\Col3.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Col\Col4.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Eph\Eph1.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Eph\Eph2.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Eph\Eph3.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Eph\Eph4.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Eph\Eph5.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Eph\Eph6.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Galatians\Galatians1.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Galatians\Galatians2.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Galatians\Galatians3.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Galatians\Galatians4.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Galatians\Galatians5.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Galatians\Galatians6.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Hebrews\Hebrews1.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Hebrews\Hebrews10.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Hebrews\Hebrews11.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Hebrews\Hebrews12.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Hebrews\Hebrews13.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Hebrews\Hebrews2.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Hebrews\Hebrews3.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Hebrews\Hebrews4.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Hebrews\Hebrews5.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Hebrews\Hebrews6.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Hebrews\Hebrews7.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Hebrews\Hebrews8.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Hebrews\Hebrews9.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\James\James1.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\James\James2.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\James\James3.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\James\James4.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\James\James5.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\John\John1.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\John\John10.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\John\John11.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\John\John12.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\John\John13.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\John\John14.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\John\John15.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\John\John16.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\John\John17.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\John\John18.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\John\John19.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\John\John2.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\John\John20.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\John\John21.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\John\John3.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\John\John4.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\John\John5.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\John\John6.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\John\John7.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\John\John8.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\John\John9.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Jude\Jude.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Luke\Luke1.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Luke\Luke10.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Luke\Luke11.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Luke\Luke12.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Luke\Luke13.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Luke\Luke14.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Luke\Luke15.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Luke\Luke16.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Luke\Luke17.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Luke\Luke18.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Luke\Luke19.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Luke\Luke2.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Luke\Luke20.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Luke\Luke21.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Luke\Luke22.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Luke\Luke23.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Luke\Luke24.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Luke\Luke3.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Luke\Luke4.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Luke\Luke5.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Luke\Luke6.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Luke\Luke7.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Luke\Luke8.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Luke\Luke9.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Mark\Mark1.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Mark\Mark10.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Mark\Mark11.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Mark\Mark12.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Mark\Mark13.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Mark\Mark14.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Mark\Mark15.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Mark\Mark16.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Mark\Mark2.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Mark\Mark3.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Mark\Mark4.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Mark\Mark5.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Mark\Mark6.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Mark\Mark7.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Mark\Mark8.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Mark\Mark9.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Matt\Matt1.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Matt\Matt10.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Matt\Matt11.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Matt\Matt12.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Matt\Matt13.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Matt\Matt14.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Matt\Matt15.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Matt\Matt16.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Matt\Matt17.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Matt\Matt18.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Matt\Matt19.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Matt\Matt2.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Matt\Matt20.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Matt\Matt21.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Matt\Matt22.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Matt\Matt23.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Matt\Matt24.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Matt\Matt25.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Matt\Matt26.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Matt\Matt27.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Matt\Matt28.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Matt\Matt3.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Matt\Matt4.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Matt\Matt5.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Matt\Matt6.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Matt\Matt7.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Matt\Matt8.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Matt\Matt9.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Philemon\Philemon.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Philip\Philip1.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Philip\Philip2.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Philip\Philip3.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Philip\Philip4.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Rev\Rev1.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Rev\Rev10.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Rev\Rev11.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Rev\Rev12.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Rev\Rev13.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Rev\Rev14.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Rev\Rev15.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Rev\Rev16.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Rev\Rev17.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Rev\Rev18.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Rev\Rev19.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Rev\Rev2.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Rev\Rev20.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Rev\Rev21.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Rev\Rev22.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Rev\Rev3.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Rev\Rev4.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Rev\Rev5.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Rev\Rev6.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Rev\Rev7.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Rev\Rev8.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Rev\Rev9.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Romans\Romans1.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Romans\Romans10.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Romans\Romans11.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Romans\Romans12.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Romans\Romans13.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Romans\Romans14.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Romans\Romans15.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Romans\Romans16.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Romans\Romans2.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Romans\Romans3.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Romans\Romans4.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Romans\Romans5.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Romans\Romans6.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Romans\Romans7.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Romans\Romans8.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Romans\Romans9.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Titus\Titus1.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Titus\Titus2.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\content\Titus\Titus3.html" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\script\book - Copy.js" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\script\book.js" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\1Cor\1COR10_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\1Cor\1COR11_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\1Cor\1COR12_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\1Cor\1COR13_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\1Cor\1COR14_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\1Cor\1COR15_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\1Cor\1COR16_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\1Cor\1COR1_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\1Cor\1COR2_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\1Cor\1COR3_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\1Cor\1COR4_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\1Cor\1COR5_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\1Cor\1COR6_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\1Cor\1COR7_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\1Cor\1COR8_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\1Cor\1COR9_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\1John\1JOHN1_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\1John\1JOHN2_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\1John\1JOHN3_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\1John\1JOHN4_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\1John\1JOHN5_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\1Peter\1PETER1_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\1Peter\1PETER2_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\1Peter\1PETER3_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\1Peter\1PETER4_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\1Peter\1PETER5_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\1Thess\1THESS1_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\1Thess\1THESS2_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\1Thess\1THESS3_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\1Thess\1THESS4_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\1Thess\1THESS5_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\1Tim\1Tim1_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\1Tim\1Tim2_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\1Tim\1Tim3_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\1Tim\1Tim4_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\1Tim\1Tim5_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\1Tim\1Tim6_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\2Cor\2COR10_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\2Cor\2COR11_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\2Cor\2COR12_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\2Cor\2COR13_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\2Cor\2COR1_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\2Cor\2COR2_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\2Cor\2COR3_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\2Cor\2COR4_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\2Cor\2COR5_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\2Cor\2COR6_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\2Cor\2COR7_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\2Cor\2COR8_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\2Cor\2COR9_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\2John\2John_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\2Peter\2Peter1_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\2Peter\2Peter2_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\2Peter\2Peter3_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\2Thess\2Thess1_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\2Thess\2Thess2_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\2Thess\2Thess3_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\2Tim\2Tim1_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\2Tim\2Tim2_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\2Tim\2Tim3_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\2Tim\2Tim4_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\3John\3John_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Acts\ACTS10_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Acts\ACTS11_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Acts\ACTS12_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Acts\ACTS13_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Acts\ACTS14_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Acts\ACTS15_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Acts\ACTS16_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Acts\ACTS17_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Acts\ACTS18_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Acts\ACTS19_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Acts\ACTS1_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Acts\ACTS20_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Acts\ACTS21_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Acts\ACTS22_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Acts\ACTS23_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Acts\ACTS24_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Acts\ACTS25_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Acts\ACTS26_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Acts\ACTS27_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Acts\ACTS28_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Acts\ACTS2_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Acts\ACTS3_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Acts\ACTS4_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Acts\ACTS5_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Acts\ACTS6_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Acts\ACTS7_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Acts\ACTS8_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Acts\ACTS9_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Col\Col1_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Col\Col2_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Col\Col3_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Col\Col4_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Eph\EPH1_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Eph\EPH2_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Eph\EPH3_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Eph\EPH4_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Eph\EPH5_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Eph\EPH6_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Galatians\Galatians1_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Galatians\Galatians2_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Galatians\Galatians3_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Galatians\Galatians4_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Galatians\Galatians5_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Galatians\Galatians6_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Hebrews\Hebrews10_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Hebrews\Hebrews11_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Hebrews\Hebrews12_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Hebrews\Hebrews13_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Hebrews\Hebrews1_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Hebrews\Hebrews2_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Hebrews\Hebrews3_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Hebrews\Hebrews4_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Hebrews\Hebrews5_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Hebrews\Hebrews6_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Hebrews\Hebrews7_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Hebrews\Hebrews8_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Hebrews\Hebrews9_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\James\James1_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\James\James2_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\James\James3_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\James\James4_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\James\James5_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\John\John10_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\John\John11_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\John\John12_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\John\John13_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\John\John14_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\John\John15_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\John\John16_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\John\John17_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\John\John18_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\John\John19_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\John\John1_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\John\John20_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\John\John21_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\John\John2_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\John\John3_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\John\John4_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\John\John5_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\John\John6_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\John\John7_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\John\John8_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\John\John9_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Jude\Jude_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Luke\luke10_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Luke\luke11_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Luke\luke12_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Luke\luke13_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Luke\luke14_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Luke\luke15_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Luke\luke16_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Luke\luke17_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Luke\luke18_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Luke\luke19_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Luke\luke1_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Luke\luke20_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Luke\luke21_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Luke\luke22_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Luke\luke23_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Luke\luke24_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Luke\luke2_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Luke\luke3_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Luke\luke4_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Luke\luke5_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Luke\luke6_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Luke\luke7_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Luke\luke8_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Luke\luke9_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Mark\mark10_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Mark\mark11_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Mark\mark12_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Mark\mark13_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Mark\mark14_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Mark\mark15_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Mark\mark16_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Mark\mark1_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Mark\mark2_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Mark\mark3_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Mark\mark4_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Mark\mark5_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Mark\mark6_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Mark\mark7_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Mark\mark8_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Mark\mark9_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Matt\Matt10_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Matt\Matt11_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Matt\Matt12_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Matt\Matt13_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Matt\Matt14_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Matt\Matt15_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Matt\Matt16_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Matt\Matt17_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Matt\Matt18_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Matt\Matt19_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Matt\Matt1_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Matt\Matt20_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Matt\Matt21_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Matt\Matt22_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Matt\Matt23_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Matt\Matt24_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Matt\Matt25_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Matt\Matt26_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Matt\Matt27_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Matt\Matt28_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Matt\Matt2_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Matt\Matt3_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Matt\Matt4_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Matt\Matt5_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Matt\Matt6_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Matt\Matt7_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Matt\Matt8_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Matt\Matt9_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Philemon\Philemon_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Philip\PHILIP1_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Philip\PHILIP2_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Philip\PHILIP3_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Philip\PHILIP4_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Rev\REV10_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Rev\REV11_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Rev\REV12_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Rev\REV13_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Rev\REV14_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Rev\REV15_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Rev\REV16_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Rev\REV17_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Rev\REV18_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Rev\REV19_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Rev\REV1_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Rev\REV20_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Rev\REV21_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Rev\REV22_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Rev\REV2_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Rev\REV3_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Rev\REV4_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Rev\REV5_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Rev\REV6_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Rev\REV7_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Rev\REV8_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Rev\REV9_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Romans\ROMANS10_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Romans\ROMANS11_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Romans\ROMANS12_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Romans\ROMANS13_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Romans\ROMANS14_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Romans\ROMANS15_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Romans\ROMANS16_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Romans\ROMANS1_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Romans\ROMANS2_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Romans\ROMANS3_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Romans\ROMANS4_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Romans\ROMANS5_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Romans\ROMANS6_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Romans\ROMANS7_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Romans\ROMANS8_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Romans\ROMANS9_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Titus\Titus1_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Titus\Titus2_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Titus\Titus3_e.mp3" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\style\book - Copy.css" />
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\style\book.css" />
+    <Content Include="Properties\Default.rd.xml" />
+    <Content Include="Assets\LockScreenLogo.scale-200.png" />
+    <Content Include="Assets\SplashScreen.scale-200.png" />
+    <Content Include="Assets\Square150x150Logo.scale-200.png" />
+    <Content Include="Assets\Square44x44Logo.scale-200.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.png" />
+    <Content Include="Assets\StoreLogo.png" />
+    <Content Include="Assets\Wide310x150Logo.scale-200.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Page Include="Views\MainPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\TabContent.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers">
+      <Version>2.9.8</Version>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
+      <Version>6.2.9</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Toolkit.Uwp.UI.Controls">
+      <Version>6.0.0</Version>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\New_Testament_in_English_and_Armenian\style\font\tahomaA.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WebViewRuntimeComponent\WebViewRuntimeComponent.csproj">
+      <Project>{C7D5E447-60DA-49CB-B9C7-09E464EC26DF}</Project>
+      <Name>WebViewRuntimeComponent</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include=".editorconfig" />
+    <None Include="New_Testament_En_Arm_TemporaryKey.pfx" />
+  </ItemGroup>
+  <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
+    <VisualStudioVersion>14.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

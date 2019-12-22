@@ -1,0 +1,115 @@
+@font-face {
+    font-family: 'armfont';
+    font-weight: normal;
+    font-style: normal;
+    src: url('font/tahomaA.ttf') format('truetype');
+}
+
+* {
+    box-sizing: border-box;
+}
+
+:before, :after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'armfont',Tahoma,Arial,Helvetica,sans-serif;
+    background-color: #FAEDD0; /*color-schem*/
+    color: #4C3B26; /*color-schem*/
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+#content_div {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 0px;
+    overflow: auto;
+}
+
+div *:focus {
+    /* Disable the browser focus highlighting. */
+    outline: none;
+}
+
+/* BOOK */
+.book_paragraph {
+    line-height: 1.2em;
+    overflow: hidden;
+}
+
+.book_paragraph > div {
+    padding: .5em 1em .5em 1em;
+    float: left;
+}
+
+@media screen and (max-width: 30em) {
+    .book_paragraph > div {
+        float: none;
+        width: 100%;
+    }
+}
+
+.book_paragraph_engl {
+    visibility: visible;
+    width: 50%;
+}
+
+.book_paragraph_arm {
+    visibility: visible;
+    width: 50%;
+}
+
+.book_paragraph_engl.book_paragraph_single {
+    visibility: visible;
+    float: none;
+    width: 100%;
+}
+
+.book_paragraph_engl.book_paragraph_hidden {
+    visibility: hidden;
+    float: none;
+    height: 0;
+    width: 0;
+    padding: 0;
+    margin: 0;
+}
+
+.book_paragraph_arm.book_paragraph_single {
+    visibility: visible;
+    float: none;
+    width: 100%;
+}
+
+.book_paragraph_arm.book_paragraph_hidden {
+    visibility: hidden;
+    float: none;
+    height: 0;
+    width: 0;
+    padding: 0;
+    margin: 0;
+}
+
+.book_paragraph_header {
+    padding-bottom: 1em;
+    font-weight: bold;
+}
+
+.book_paragraph_num {
+    vertical-align: super;
+    font-size: smaller;
+    padding-right: 0.5em;
+    color: #777777;
+}
+
+/* Prefereces */
+.body-color-white {
+    background-color: #FFFFFF; /*color-schem*/
+    color: #000000; /*color-schem*/
+}
+
+/* setInterval */
