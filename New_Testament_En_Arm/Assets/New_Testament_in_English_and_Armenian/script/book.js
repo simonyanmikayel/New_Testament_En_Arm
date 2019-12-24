@@ -150,14 +150,18 @@ function get_par_color(sel) {
     var color;
     if (sel) {
         if (color_mode == 0) {
-            color = '#1033FF';
+//            color = '#1033FF';
+            color = '#0B24B5';
         } else {
-            color = '#0000FF';
+//            color = '#0000FF';
+            color = '#0000D0';
         }
     } else {
         if (color_mode == 0) {
             color = '#4C3B26';
+//            color = '#7A5F3D';
         } else {
+//            color = '#000000';
             color = '#000000';
         }
     }
@@ -246,17 +250,26 @@ function scrollToSmoothly(pos, time, cur_scrolNN){
 	});
 }
 
+function get_scroll_pos(par) {
+	try {
+		var elem = document.getElementById('book_paragraph_'+par);
+		var pos = elem.offsetTop;
+		var viewportHeight = window.innerHeight;
+		var elemHeight = elem.offsetHeight;
+		//log("offsetTop" + elem.offsetTop + " scrollHeight " + elem.scrollHeight + " offsetHeight " + elem.offsetHeight);
+		if (elemHeight < viewportHeight)
+			pos -= (viewportHeight - elemHeight)/2;
+		return pos;
+	} catch (e) {
+		log('scroll_pos '+ e.message);
+	}
+}
+
 function scroll_to_par(par) {
 	try {
 		set_cur_par(par);
 		if (autoscroll_mode < 2) {
-			var elem = document.getElementById('book_paragraph_'+par);
-			var pos = elem.offsetTop;
-			var viewportHeight = window.innerHeight;
-			var elemHeight = elem.offsetHeight;
-			//log("offsetTop" + elem.offsetTop + " scrollHeight " + elem.scrollHeight + " offsetHeight " + elem.offsetHeight);
-			if (elemHeight < viewportHeight)
-				pos -= (viewportHeight - elemHeight)/2;
+			var pos = get_scroll_pos(par);
 			if (autoscroll_mode == 0) {
 				scrollToSmoothly(pos, 500, ++scrolNN);
             } else {
@@ -265,5 +278,15 @@ function scroll_to_par(par) {
 		}
 	} catch (e) {
 		log('scroll_to_par '+ e.message);
+	}
+}
+
+function restore_pos(par) {
+	try {
+		set_cur_par(par);
+		var pos = get_scroll_pos(par);
+		window.scrollTo(0, pos);
+	} catch (e) {
+		log('restore_pos '+ e.message);
 	}
 }

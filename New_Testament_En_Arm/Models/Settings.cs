@@ -10,30 +10,31 @@ using System.Threading.Tasks;
 using ThisApp.Extensions;
 using ThisApp.Helpers;
 using Windows.Storage;
+using Windows.UI.Xaml.Media;
 
 namespace ThisApp.Models
 {
     public class Settings : INotifyPropertyChanged
     {
-        public enum UiColor
+        public enum ColorModeType
         {
             Sepa,
             White
         }
-        public enum Play
+        public enum AudioPlayModeType
         {
             All,
             Chapter,
             Paragraph,
             None
         }
-    public enum Scroll
+        public enum ScrollModeType
         {
             Smoothly,
             Fast,
             None
         }
-    public ObservableCollection<String> Languages { get; }
+        public ObservableCollection<String> Languages { get; }
         public ObservableCollection<String> FontSizes { get; }
         public ObservableCollection<String> ColorModes { get; }
         public ObservableCollection<String> AudioPlayModes { get; }
@@ -57,22 +58,40 @@ namespace ThisApp.Models
             FontSizes.Add("XX-Large");
 
             ColorModes = new ObservableCollection<string>();
-            ColorModes.Add(UiColor.Sepa.ToString());
-            ColorModes.Add(UiColor.White.ToString());
+            ColorModes.Add(ColorModeType.Sepa.ToString());
+            ColorModes.Add(ColorModeType.White.ToString());
 
             AudioPlayModes = new ObservableCollection<string>();
-            AudioPlayModes.Add(Play.All.ToString());
-            AudioPlayModes.Add(Play.Chapter.ToString());
-            AudioPlayModes.Add(Play.Paragraph.ToString());
-            AudioPlayModes.Add(Play.None.ToString());
+            AudioPlayModes.Add(AudioPlayModeType.All.ToString());
+            AudioPlayModes.Add(AudioPlayModeType.Chapter.ToString());
+            AudioPlayModes.Add(AudioPlayModeType.Paragraph.ToString());
+            AudioPlayModes.Add(AudioPlayModeType.None.ToString());
 
             ScrollModes = new ObservableCollection<string>();
-            ScrollModes.Add(Scroll.Smoothly.ToString());
-            ScrollModes.Add(Scroll.Fast.ToString());
-            ScrollModes.Add(Scroll.None.ToString());
+            ScrollModes.Add(ScrollModeType.Smoothly.ToString());
+            ScrollModes.Add(ScrollModeType.Fast.ToString());
+            ScrollModes.Add(ScrollModeType.None.ToString());
 
             LoadSettings();
         }
+        public Windows.UI.Color UiColor 
+        {
+            get
+            {
+                if (ColorMode == ColorModeType.Sepa)
+                    return Windows.UI.Color.FromArgb(0xFF, 0xFC, 0xF4, 0xE3);
+                else
+                    return Windows.UI.Colors.LightGray;
+            }
+        }
+        public Brush UiBrush
+        {
+            get
+            {
+                return new SolidColorBrush(UiColor);
+            }
+        }
+
         private int _Language;
         public int Language
         {
@@ -85,8 +104,8 @@ namespace ThisApp.Models
             get { return _FontSize; }
             set { Dbg.d(); _FontSize = value; OnPropertyChanged(); }
         }
-        private UiColor _ColorMode;
-        public UiColor ColorMode
+        private ColorModeType _ColorMode;
+        public ColorModeType ColorMode
         {
             get { return _ColorMode; }
             set { Dbg.d(); _ColorMode = value; OnPropertyChanged(); }
@@ -97,14 +116,14 @@ namespace ThisApp.Models
             get { return _HighlightParagraph != 0; }
             set { Dbg.d(); _HighlightParagraph = value ? 1 : 0; OnPropertyChanged(); }
         }
-        private Play _AudioPlaylMode;
-        public Play AudioPlayMode
+        private AudioPlayModeType _AudioPlaylMode;
+        public AudioPlayModeType AudioPlayMode
         {
             get { return _AudioPlaylMode; }
             set { Dbg.d(); _AudioPlaylMode = value; OnPropertyChanged(); }
         }
-        private Scroll _ScrollMode;
-        public Scroll ScrollMode
+        private ScrollModeType _ScrollMode;
+        public ScrollModeType ScrollMode
         {
             get { return _ScrollMode; }
             set { Dbg.d(); _ScrollMode = value; OnPropertyChanged(); }
@@ -117,7 +136,7 @@ namespace ThisApp.Models
         #region serialisation
         private void SaveSetting(string propertyName)
         {
-            //if (0 == string.Compare(propertyName, nameof(Language), StringComparison.InvariantCulture))
+            //if (0 == string.Compare(propertyName, nameof(Language), StringComparison.Ordinal))
             LocalSettings.Values[nameof(Language)] = _Language;
             LocalSettings.Values[nameof(FontSize)] = _FontSize;
             LocalSettings.Values[nameof(ColorMode)] = (int)_ColorMode;
@@ -129,11 +148,11 @@ namespace ThisApp.Models
         {
             _Language = LocalSettings.GetInt(nameof(Language), 0);
             _FontSize = LocalSettings.GetInt(nameof(FontSize), 3);
-            _ColorMode = LocalSettings.GetEnum<UiColor>(nameof(ColorMode), UiColor.Sepa);
+            _ColorMode = LocalSettings.GetEnum<ColorModeType>(nameof(ColorMode), ColorModeType.Sepa);
 
             _HighlightParagraph = LocalSettings.GetInt(nameof(HighlightParagraph), 1);
-            _AudioPlaylMode = LocalSettings.GetEnum<Play>(nameof(AudioPlayMode), Play.All);
-            _ScrollMode = LocalSettings.GetEnum<Scroll>(nameof(ScrollMode), Scroll.Smoothly);
+            _AudioPlaylMode = LocalSettings.GetEnum<AudioPlayModeType>(nameof(AudioPlayMode), AudioPlayModeType.All);
+            _ScrollMode = LocalSettings.GetEnum<ScrollModeType>(nameof(ScrollMode), ScrollModeType.Smoothly);
         }
         public String GetSettings()
         {

@@ -11,7 +11,8 @@
     xmlns:toolkit="using:Microsoft.Toolkit.Uwp.UI.Controls"
     xmlns:animations="using:Microsoft.Toolkit.Uwp.UI.Animations"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    Loaded="Page_Loaded">
 
     <Page.Resources>
         <animations:AnimationCollection x:Key="TitleShowAnimation">
@@ -44,7 +45,7 @@
             <VisualStateGroup x:Name="FullScreenStates">
                 <VisualState x:Name="Default">
                     <VisualState.Setters>
-                        <Setter Target="AppTitleBar.Background" Value="Transparent"/>
+                        <!--<Setter Target="AppTitleBar.Background" Value="Transparent"/>-->
                         <Setter Target="ContentPresenter.(Grid.Row)" Value="1" />
                         <Setter Target="ContentPresenter.(Grid.RowSpan)" Value="1" />
                         <Setter Target="FullScreenButton.Visibility" Value="Visible" />
@@ -52,7 +53,7 @@
                 </VisualState>
                 <VisualState x:Name="FullScreen">
                     <VisualState.Setters>
-                        <Setter Target="AppTitleBar.Background" Value="{ThemeResource ApplicationPageBackgroundThemeBrush}"/>
+                        <!--<Setter Target="AppTitleBar.Background" Value="{x:Bind  Settings.UiBrush, Mode=OneWay}"/>-->
                         <Setter Target="ContentPresenter.(Grid.Row)" Value="0" />
                         <Setter Target="ContentPresenter.(Grid.RowSpan)" Value="2" />
                         <Setter Target="FullScreenButton.Visibility" Value="Collapsed" />
@@ -105,10 +106,15 @@
             AllowDrop="True"
             SelectionChanged="Items_SelectionChanged"
             CanCloseTabs="True">
+            <!--<toolkit:TabView.ItemContainerStyle>
+                <Style TargetType="models:TabItem">
+                    <Setter Property="Background" Value="Aqua"/>
+                </Style>
+            </toolkit:TabView.ItemContainerStyle>-->
             <toolkit:TabView.Resources>
                 <x:Double x:Key="TabViewItemHeaderHeight">40</x:Double>
                 <x:Double x:Key="TabViewItemHeaderMinHeight">40</x:Double>
-                <x:Double x:Key="TabViewItemHeaderMinWidth">100</x:Double>
+                <x:Double x:Key="TabViewItemHeaderMinWidth">200</x:Double>
                 <x:Double x:Key="TabViewItemHeaderMaxWidth">200</x:Double>
                 <x:Double x:Key="TabViewHeaderButtonWidth">40</x:Double>
             </toolkit:TabView.Resources>
@@ -147,7 +153,6 @@
                     </Button>
                 </StackPanel>
             </toolkit:TabView.TabActionHeader>
-
             <toolkit:TabView.TabEndHeader>
                 <StackPanel Orientation="Horizontal">
                     <Button
@@ -167,32 +172,32 @@
                                     <ComboBox 
                                         Header="Language:"
                                         Style="{StaticResource SettingsComboBoxStyle}"
-                                        ItemsSource="{x:Bind AppData.Settings.Languages}"
-                                        SelectedIndex="{x:Bind AppData.Settings.Language, Mode=TwoWay}"/>
+                                        ItemsSource="{x:Bind Settings.Languages}"
+                                        SelectedIndex="{x:Bind Settings.Language, Mode=TwoWay}"/>
                                     <ComboBox 
                                         Header="Text Size:"
                                         Style="{StaticResource SettingsComboBoxStyle}"
-                                        ItemsSource="{x:Bind AppData.Settings.FontSizes}"
-                                        SelectedIndex="{x:Bind AppData.Settings.FontSize, Mode=TwoWay}"/>
+                                        ItemsSource="{x:Bind Settings.FontSizes}"
+                                        SelectedIndex="{x:Bind Settings.FontSize, Mode=TwoWay}"/>
                                     <ComboBox 
                                         Header="Color:"
                                         Style="{StaticResource SettingsComboBoxStyle}" 
-                                        ItemsSource="{x:Bind AppData.Settings.ColorModes}"
-                                        SelectedIndex="{x:Bind AppData.Settings.ColorMode, Converter={StaticResource EnumConverter}, Mode=TwoWay}"/>
+                                        ItemsSource="{x:Bind Settings.ColorModes}"
+                                        SelectedIndex="{x:Bind Settings.ColorMode, Converter={StaticResource EnumConverter}, Mode=TwoWay}"/>
                                     <ToggleSwitch 
                                         Header="Highlight paragraph:"
-                                        IsOn="{x:Bind AppData.Settings.HighlightParagraph, Mode=TwoWay}"
+                                        IsOn="{x:Bind Settings.HighlightParagraph, Mode=TwoWay}"
                                         Style="{StaticResource SettingsToggleSwitchStyle}"/>
                                     <ComboBox 
                                         Header="Auto play:"
                                         Style="{StaticResource SettingsComboBoxStyle}"
-                                        ItemsSource="{x:Bind AppData.Settings.AudioPlayModes}"
-                                        SelectedIndex="{x:Bind AppData.Settings.AudioPlayMode, Converter={StaticResource EnumConverter}, Mode=TwoWay}"/>
+                                        ItemsSource="{x:Bind Settings.AudioPlayModes}"
+                                        SelectedIndex="{x:Bind Settings.AudioPlayMode, Converter={StaticResource EnumConverter}, Mode=TwoWay}"/>
                                     <ComboBox 
                                         Header="Auto scroll:"
                                         Style="{StaticResource SettingsComboBoxStyle}"
-                                        ItemsSource="{x:Bind AppData.Settings.ScrollModes}"
-                                        SelectedIndex="{x:Bind AppData.Settings.ScrollMode, Converter={StaticResource EnumConverter}, Mode=TwoWay}"/>
+                                        ItemsSource="{x:Bind Settings.ScrollModes}"
+                                        SelectedIndex="{x:Bind Settings.ScrollMode, Converter={StaticResource EnumConverter}, Mode=TwoWay}"/>
                                     <HyperlinkButton Content="View on GitHub" NavigateUri="https://github.com/simonyanmikayel/New_Testament_En_Arm" />
                                 </StackPanel> 
                             </Flyout>

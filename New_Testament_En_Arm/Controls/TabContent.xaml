@@ -25,7 +25,7 @@
             AutoPlay="False"
             AreTransportControlsEnabled="True">
             <MediaPlayerElement.TransportControls>
-                <MediaTransportControls
+                <local:CustomMediaTransportControls
                     IsCompact="True"
                     IsNextTrackButtonVisible="True"
                     IsPreviousTrackButtonVisible="True"

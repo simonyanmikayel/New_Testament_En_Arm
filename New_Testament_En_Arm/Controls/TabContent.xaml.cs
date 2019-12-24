@@ -32,15 +32,12 @@ namespace ThisApp.Controls
             _objectID = ++_objectNN;
             _chapter = chapter;
             this.InitializeComponent();
-            var color = Windows.UI.Color.FromArgb(255, 0xFA, 0xED, 0xD0);
-            // /this.Background = new SolidColorBrush(color);
-            // /Rectangle.Fill = new SolidColorBrush(color);
-            //MyWebView.DefaultBackgroundColor = color;
-            MyPlayer.Background = new SolidColorBrush(color);
+
+            ApplyUiColors();
 
             MyWebView.Settings.IsJavaScriptEnabled = true; //enabled by default
 
-            AppData.Instance.Settings.PropertyChanged += TabContent_PropertyChanged;
+            AppData.Settings.PropertyChanged += TabContent_PropertyChanged;
 
             MyPlayer.MediaPlayer.CommandManager.PreviousBehavior.EnablingRule = _chapter.HasPreviousChapter() ? MediaCommandEnablingRule.Always : MediaCommandEnablingRule.Never;
             MyPlayer.TransportControls.IsPreviousTrackButtonVisible = _chapter.HasPreviousChapter() ? true : false;
@@ -54,8 +51,18 @@ namespace ThisApp.Controls
             MyWebView.Navigate(new Uri(_chapter.BookTextPath()));
         }
 
+        private void ApplyUiColors()
+        {
+            Windows.UI.Color uiColor = AppData.Settings.UiColor;
+            //Brush uiBrush = new SolidColorBrush(AppData.Settings.UiColor);
+            MyWebView.DefaultBackgroundColor = uiColor;
+        }
         private async void TabContent_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
+            if (e.PropertyName.Equals(nameof(Settings.ColorMode), StringComparison.Ordinal))
+            {
+                ApplyUiColors();
+            }
             _handleSettingsArgs[0] = GetSettings();
             await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, async () =>
             {
@@ -70,14 +77,15 @@ namespace ThisApp.Controls
             MyPlayer.MediaPlayer.MediaEnded += MediaPlayer_MediaEnded;
             if (_firstLoaded)
             {
-                _firstLoaded = false;
                 await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, async () =>
                 {
                     if (_chapter.Paragraph > 0)
                         SetPlaybackPos(_chapter.Paragraph);
+                    else
+                        _firstLoaded = false;
                 });
             }
-            if (AppData.Instance.Settings.AudioPlayMode != Settings.Play.None)
+            if (AppData.Settings.AudioPlayMode != Settings.AudioPlayModeType.None)
                 MyPlayer.MediaPlayer.Play();
         }
         private void UserControl_Unloaded(object sender, RoutedEventArgs e)
@@ -152,13 +160,14 @@ namespace ThisApp.Controls
             _scrollArgs[0] = par.ToString(inv);
             await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, async () =>
             {
-                try
+                if (_firstLoaded)
+                {
+                    _firstLoaded = false;
+                    await MyWebView.InvokeScriptAsync("restore_pos", _scrollArgs);
+                }
+                else
                 {
                     await MyWebView.InvokeScriptAsync("scroll_to_par", _scrollArgs);
-                }
-                catch (Exception e)
-                {
-                    Dbg.d("scrollToPar " + e);
                 }
             });
         }
@@ -181,11 +190,11 @@ namespace ThisApp.Controls
             _chapter.Paragraph = par;
             Dbg.d("_curParagraph " + _curParagraph);
 
-            //if (AppData.Instance.Settings.ScrollMode != Settings.Scroll.None)
+            //if (AppData.Settings.ScrollMode != Settings.Scroll.None)
             scrollToPar(par);
 
-            if (AppData.Instance.Settings.AudioPlayMode == Settings.Play.None ||
-                AppData.Instance.Settings.AudioPlayMode == Settings.Play.Paragraph)
+            if (AppData.Settings.AudioPlayMode == Settings.AudioPlayModeType.None ||
+                AppData.Settings.AudioPlayMode == Settings.AudioPlayModeType.Paragraph)
             {
                 await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, async () =>
                 {
@@ -210,7 +219,7 @@ namespace ThisApp.Controls
             MyPlayer.MediaPlayer.PlaybackSession.Position = new TimeSpan(pos);
             double pos2 = MyPlayer.MediaPlayer.PlaybackSession.Position.TotalMilliseconds;
 
-            if (AppData.Instance.Settings.AudioPlayMode == Settings.Play.Paragraph)
+            if (AppData.Settings.AudioPlayMode == Settings.AudioPlayModeType.Paragraph)
             {
                 await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, async () =>
                 {
@@ -234,12 +243,12 @@ namespace ThisApp.Controls
         public string GetSettings()
         {
             Dbg.d();
-            return AppData.Instance.Settings.GetSettings();
+            return AppData.Settings.GetSettings();
         }
         private async void MediaPlayer_MediaEnded(MediaPlayer sender, object args)
         {
             Dbg.d("MediaPlayer_MediaEnded " + _curParagraph);
-            if (AppData.Instance.Settings.AudioPlayMode == Settings.Play.All)
+            if (AppData.Settings.AudioPlayMode == Settings.AudioPlayModeType.All)
             {
                 await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, async () =>
                 {

@@ -12,30 +12,19 @@ namespace ThisApp.Models
 {
     public class AppData
     {
-        public Settings Settings { get; private set; }
-        public List<Chapter> Chapters { get; private set; }
-        public int SelectedIndex { get; private set; }
-
-        private static readonly AppData instance = new AppData();
+        public static Settings Settings { get; private set; }
+        public static List<Chapter> Chapters { get; private set; }
+        public static int SelectedIndex { get; private set; }
 
         // Explicit static constructor to tell C# compiler
         // not to mark type as beforefieldinit
         static AppData()
         {
-        }
-        public static AppData Instance
-        {
-            get
-            {
-                return instance;
-            }
-        }
-        private AppData()
-        {
             Settings = new Settings();
             LoadChapters();
         }
-        public Chapter SelectedChapter 
+       
+        public static Chapter SelectedChapter 
         { 
             get 
             {
@@ -44,25 +33,25 @@ namespace ThisApp.Models
             } 
         }
 
-        public void SetSelectedChapter(Chapter chapter)
+        public static void SetSelectedChapter(Chapter chapter)
         {
             int index = Chapters.IndexOf(chapter);
             Debug.Assert(index >= 0);
             SelectedIndex = index;
             Dbg.d("chapter.ID " + chapter.ID + " index " + index);
         }
-        public void AddChapter(Chapter chapter)
+        public static void AddChapter(Chapter chapter)
         {
             Debug.Assert(Chapters.IndexOf(chapter) < 0);
             Chapters.Add(chapter);
         }
-        public void RemoveChapter(Chapter chapter)
+        public static void RemoveChapter(Chapter chapter)
         {
             Debug.Assert(Chapters.IndexOf(chapter) >= 0);
             Chapters.Remove(chapter);
         }
         #region serialisation
-        public void SaveChapters()
+        public static void SaveChapters()
         {
             Windows.Storage.ApplicationDataCompositeValue composite = new Windows.Storage.ApplicationDataCompositeValue();
             composite[nameof(SelectedIndex)] = SelectedIndex;
@@ -75,7 +64,7 @@ namespace ThisApp.Models
             }
             LocalSettings.Values[nameof(Chapters)] = composite;
         }
-        private void LoadChapters()
+        private static void LoadChapters()
         {
             Windows.Storage.ApplicationDataCompositeValue composite = (ApplicationDataCompositeValue)LocalSettings.Values[nameof(Chapters)];
             while (composite != null)

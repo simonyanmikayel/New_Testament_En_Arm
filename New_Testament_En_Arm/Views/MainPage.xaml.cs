@@ -13,6 +13,7 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using ThisApp.Models;
 using System.Diagnostics;
+using System.Globalization;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -20,7 +21,7 @@ namespace ThisApp.Views
 {
     public sealed partial class MainPage : Page, INotifyPropertyChanged
     {
-        public AppData AppData { get; }
+        public Settings Settings { get; }
         TickEvent _tickEvent = new TickEvent();
         public static MainPage TheMainPage { get; private set; }
 
@@ -40,13 +41,13 @@ namespace ThisApp.Views
         {
             InitializeComponent();
             TheMainPage = this;
-            AppData = AppData.Instance;
+            Settings = AppData.Settings;
             AppMenu = new AppMenu(MenuItem_Click);
 
-            //var color = Windows.UI.Color.FromArgb(255, 0xFA, 0xED, 0xD0);
-            //this.Background = new SolidColorBrush(color);
-            //ContentPresenter.Background = new SolidColorBrush(color);
-            // /MyTabView.BorderBrush = new SolidColorBrush(color);
+            AppData.Settings.PropertyChanged += Settings_PropertyChanged;
+            ApplyUiColors();
+            // Set XAML element as draggable region.
+            Window.Current.SetTitleBar(AppTitleBar);
 
             // Hide default title bar.
             // https://docs.microsoft.com/en-us/windows/uwp/design/shell/title-bar
@@ -59,25 +60,43 @@ namespace ThisApp.Views
 
             coreTitleBar.IsVisibleChanged += this.CoreTitleBar_IsVisibleChanged;
 
-            // Set XAML element as draggable region.
-            Window.Current.SetTitleBar(AppTitleBar);
-
             // Listen for Fullscreen Changes from Shift+Win+Enter or our F11 shortcut
             ApplicationView.GetForCurrentView().VisibleBoundsChanged += this.MainPage_VisibleBoundsChanged;
 
-            ApplicationViewTitleBar titleBar = ApplicationView.GetForCurrentView().TitleBar;
-            titleBar.ButtonBackgroundColor = Windows.UI.Colors.White;
-            titleBar.ButtonInactiveBackgroundColor = Windows.UI.Colors.White;
-
-            int SelectedIndex = AppData.SelectedIndex;
-            foreach (Chapter chapter in AppData.Chapters)
+        }
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            _tickEvent.Triger(() => 
             {
-                MyTabView.Items.Add(new TabItem(chapter));
-            }
-            _tickEvent.Triger(() =>
-            {
-                MyTabView.SelectedIndex = SelectedIndex;
+                int selectedIndex = AppData.SelectedIndex;
+                foreach (Chapter chapter in AppData.Chapters)
+                {
+                    MyTabView.Items.Add(new TabItem(chapter));
+                }
+                _tickEvent.Triger(() => 
+                {
+                    MyTabView.SelectedIndex = selectedIndex;
+                });
             });
+        }
+
+        private void ApplyUiColors()
+        {
+            Windows.UI.Color uiColor = AppData.Settings.UiColor;
+            Brush uiBrush = new SolidColorBrush(AppData.Settings.UiColor);
+            this.Background = uiBrush;
+            ApplicationViewTitleBar titleBar = ApplicationView.GetForCurrentView().TitleBar;
+            titleBar.ButtonBackgroundColor = uiColor;
+            titleBar.ButtonInactiveBackgroundColor = uiColor;
+            AppTitleBar.Background = uiBrush;
+            //MyTabView.Background = uiBrush;
+        }
+        private void Settings_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName.Equals(nameof(Settings.ColorMode), StringComparison.Ordinal))
+            {
+                ApplyUiColors();
+            }
         }
 
         #region Handle App TitleBar
@@ -106,6 +125,7 @@ namespace ThisApp.Views
         {
             // Update Fullscreen from other modes of adjusting view (keyboard shortcuts)
             IsFullScreen = ApplicationView.GetForCurrentView().IsFullScreenMode;
+            //ApplyUiColors();
         }
 
         private void AppFullScreenShortcut(KeyboardAccelerator sender, KeyboardAcceleratorInvokedEventArgs args)

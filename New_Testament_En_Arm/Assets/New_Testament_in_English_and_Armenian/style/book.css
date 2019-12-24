@@ -17,9 +17,15 @@ body {
     margin: 0;
     font-family: 'armfont',Tahoma,Arial,Helvetica,sans-serif;
     background-color: #FAEDD0; /*color-schem*/
-    color: #4C3B26; /*color-schem*/
+    color: #4C3B26; /* 4C3B26 color-schem*/
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+}
+
+/* Prefereces */
+.body-color-white {
+    background-color: #FFFFFF; /*color-schem*/
+    color: #000000; /*color-schem*/
 }
 
 #content_div {
@@ -105,11 +111,3 @@ div *:focus {
     padding-right: 0.5em;
     color: #777777;
 }
-
-/* Prefereces */
-.body-color-white {
-    background-color: #FFFFFF; /*color-schem*/
-    color: #000000; /*color-schem*/
-}
-
-/* setInterval */

@@ -37,8 +37,9 @@ namespace Helpers
             {
                 if (_onTick != null)
                 {
-                    _onTick();
+                    OnTick tick = _onTick;
                     _onTick = null;
+                    tick();
                 }
             }
             //);
