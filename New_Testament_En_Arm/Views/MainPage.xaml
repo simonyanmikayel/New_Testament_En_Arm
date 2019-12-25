@@ -30,6 +30,10 @@
             <Setter Property="Margin" Value="8,14,8,5" />
             <Setter Property="Padding" Value="8,4,8,5" />
         </Style>
+        <Style TargetType="HyperlinkButton" x:Key="SettingsHyperlinkButton">
+            <Setter Property="Margin" Value="8,14,8,5" />
+            <Setter Property="Padding" Value="8,4,8,5" />
+        </Style>
         <helpers:EnumAndNumberConverter xmlns:converter="ThisApp.Helpers" x:Key="EnumConverter"/>
     </Page.Resources>
 
@@ -197,7 +201,21 @@
                                         Style="{StaticResource SettingsComboBoxStyle}"
                                         ItemsSource="{x:Bind Settings.ScrollModes}"
                                         SelectedIndex="{x:Bind Settings.ScrollMode, Converter={StaticResource EnumConverter}, Mode=TwoWay}"/>
-                                    <HyperlinkButton Content="View on GitHub" NavigateUri="https://github.com/simonyanmikayel/New_Testament_En_Arm" />
+                                    <RichTextBlock MaxWidth="200" Margin="8,14,8,5" Padding="8,4,8,5">
+                                        <Paragraph Margin="0,8,0,14">
+                                            <Hyperlink NavigateUri="https://github.com/simonyanmikayel/New_Testament_En_Arm">View on GitHub</Hyperlink>
+                                        </Paragraph>
+                                        <Paragraph>
+                                            Sources:
+                                        </Paragraph>
+                                        <Paragraph>
+                                            The English text and audio files are retrieved from
+                                            <Hyperlink NavigateUri="https://www.audiotreasure.com/">audiotreasure.com</Hyperlink>
+                                        </Paragraph>
+                                        <Paragraph>
+                                            The Armenian text is based on the East Armenian translation of the New Testament, published in 1975 at Holy Etchmiadzin.
+                                        </Paragraph>
+                                    </RichTextBlock>
                                 </StackPanel> 
                             </Flyout>
                         </Button.Flyout>
