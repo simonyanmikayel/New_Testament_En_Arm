@@ -9,7 +9,7 @@
   <Identity
     Name="42558MikayelSimonyan.BilingualNewTestamentEnglish-"
     Publisher="CN=DA5D60EE-2A7A-499B-A8E7-A74E7F2F506D"
-    Version="1.0.2.0" />
+    Version="1.0.5.0" />
 
   <mp:PhoneIdentity PhoneProductId="07c3f17d-7aa9-463a-bf00-f28c2e623dad" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
@@ -35,7 +35,7 @@
         DisplayName="Bilingual New Testament, English - Armenian"
         Square150x150Logo="Assets\Square150x150Logo.png"
         Square44x44Logo="Assets\Square44x44Logo.png"
-        Description="Bilingual New Testament in English and Armenian"
+        Description="Bilingual New Testament aoudio book in English and Armenian"
         BackgroundColor="transparent">
         <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png"/>
         <uap:SplashScreen Image="Assets\SplashScreen.png" />
