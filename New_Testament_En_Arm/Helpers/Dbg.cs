@@ -7,9 +7,6 @@ using System.Threading.Tasks;
 
 namespace ThisApp.Helpers
 {
-    public interface IDbg
-    {
-    }
     public static class Dbg
     {
         static int _logNN;

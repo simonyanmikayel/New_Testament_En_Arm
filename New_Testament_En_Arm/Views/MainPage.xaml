@@ -78,7 +78,7 @@
 
         <!-- Our main content, we'll move this up in the grid when we're fullscreen with the VSM above. -->
         <ContentPresenter x:Name="ContentPresenter" Grid.Row="1" Grid.ColumnSpan="3" 
-                          Content="{x:Bind ((models:TabItem)MyTabView.SelectedItem).TabContent, Mode=OneWay}"/>
+                          Content="{x:Bind ((controls:CustomTabViewItem)MyTabView.SelectedItem).TabContent, Mode=OneWay}"/>
 
         <!-- This is a 'dummy' blank area to actually capture mouse events that are needed to drag the window around. -->
         <Grid x:Name="AppTitleBar"
@@ -92,7 +92,6 @@
             </Grid.ColumnDefinitions>
         </Grid>
 
-        <!--SelectedTabWidth="200"-->
         <toolkit:TabView
             x:Name="MyTabView"
             Grid.Column="1"
@@ -107,14 +106,14 @@
             SelectionChanged="Items_SelectionChanged"
             CanCloseTabs="True">
             <!--<toolkit:TabView.ItemContainerStyle>
-                <Style TargetType="models:TabItem">
-                    <Setter Property="Background" Value="Aqua"/>
+                <Style TargetType="controls:CustomTabViewItem">
+                    <Setter Property="Background" Value="{x:Bind  Settings.UiBrush, Mode=OneWay}"/>
                 </Style>
             </toolkit:TabView.ItemContainerStyle>-->
             <toolkit:TabView.Resources>
                 <x:Double x:Key="TabViewItemHeaderHeight">40</x:Double>
                 <x:Double x:Key="TabViewItemHeaderMinHeight">40</x:Double>
-                <x:Double x:Key="TabViewItemHeaderMinWidth">200</x:Double>
+                <x:Double x:Key="TabViewItemHeaderMinWidth">150</x:Double>
                 <x:Double x:Key="TabViewItemHeaderMaxWidth">200</x:Double>
                 <x:Double x:Key="TabViewHeaderButtonWidth">40</x:Double>
             </toolkit:TabView.Resources>

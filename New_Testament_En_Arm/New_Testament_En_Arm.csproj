@@ -140,7 +140,7 @@
     <Compile Include="Models\Book.cs" />
     <Compile Include="Models\Chapter.cs" />
     <Compile Include="Models\Settings.cs" />
-    <Compile Include="Models\TabItem.cs" />
+    <Compile Include="Controls\CustomTabViewItem.cs" />
     <Compile Include="Views\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>

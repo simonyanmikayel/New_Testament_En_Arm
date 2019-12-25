@@ -2,16 +2,19 @@
 using System;
 using ThisApp.Controls;
 using Windows.UI.Xaml.Controls;
+using ThisApp.Models;
 
-namespace ThisApp.Models
+namespace ThisApp.Controls
 {
-    public class TabItem : TabViewItem
+    public class CustomTabViewItem : TabViewItem
     {
         static int _objectNN;
         int _objectID;
         public Chapter Chapter { get; }
-         public TabItem(Chapter chapter)
+
+        public CustomTabViewItem(Chapter chapter)
         {
+            //this.DefaultStyleKey = typeof(CustomTabViewItem);
             _objectID = ++_objectNN;
             Chapter = chapter;
             Header = Chapter.BookTabHeader();

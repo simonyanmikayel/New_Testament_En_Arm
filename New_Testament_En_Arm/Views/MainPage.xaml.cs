@@ -14,6 +14,7 @@ using System.Runtime.CompilerServices;
 using ThisApp.Models;
 using System.Diagnostics;
 using System.Globalization;
+using ThisApp.Controls;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -71,7 +72,7 @@ namespace ThisApp.Views
                 int selectedIndex = AppData.SelectedIndex;
                 foreach (Chapter chapter in AppData.Chapters)
                 {
-                    MyTabView.Items.Add(new TabItem(chapter));
+                    MyTabView.Items.Add(new CustomTabViewItem(chapter));
                 }
                 _tickEvent.Triger(() => 
                 {
@@ -178,7 +179,7 @@ namespace ThisApp.Views
             if (newTab)
             {
                 AppData.AddChapter(chapter);
-                MyTabView.Items.Add(new TabItem(chapter));
+                MyTabView.Items.Add(new CustomTabViewItem(chapter));
                 _tickEvent.Triger(() =>
                 {
                     MyTabView.SelectedIndex = MyTabView.Items.Count - 1;
@@ -187,10 +188,10 @@ namespace ThisApp.Views
             else
             {
                 AppData.Chapters[AppData.SelectedIndex] = chapter;
-                MyTabView.Items[AppData.SelectedIndex] = new TabItem(chapter);
+                MyTabView.Items[AppData.SelectedIndex] = new CustomTabViewItem(chapter);
                 _tickEvent.Triger(() =>
                 {
-                    TabItem selectedTabItem = MyTabView.Items[AppData.SelectedIndex] as TabItem;
+                    CustomTabViewItem selectedTabItem = MyTabView.Items[AppData.SelectedIndex] as CustomTabViewItem;
                     MyTabView.SelectedItem = selectedTabItem;
                 });
             }
@@ -198,7 +199,7 @@ namespace ThisApp.Views
         private void Items_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var addedItem = e.AddedItems.FirstOrDefault();
-            if (addedItem is TabItem addedTabItem)
+            if (addedItem is CustomTabViewItem addedTabItem)
             {
                 AppData.SetSelectedChapter(addedTabItem.Chapter);
                 ApplicationView.GetForCurrentView().Title = addedTabItem.Header.ToString();
@@ -210,7 +211,7 @@ namespace ThisApp.Views
             {
                 CoreApplication.Exit();
             }
-            else if (e.Item is TabItem closedTabItem)
+            else if (e.Item is CustomTabViewItem closedTabItem)
             {
                 Chapter selectedChapter = AppData.SelectedChapter;
                 bool selectedClosed = (closedTabItem.Chapter == selectedChapter);

@@ -77,7 +77,7 @@ namespace ThisApp.Controls
             MyPlayer.MediaPlayer.MediaEnded += MediaPlayer_MediaEnded;
             if (_firstLoaded)
             {
-                await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, async () =>
+                await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
                 {
                     if (_chapter.Paragraph > 0)
                         SetPlaybackPos(_chapter.Paragraph);
@@ -196,7 +196,7 @@ namespace ThisApp.Controls
             if (AppData.Settings.AudioPlayMode == Settings.AudioPlayModeType.None ||
                 AppData.Settings.AudioPlayMode == Settings.AudioPlayModeType.Paragraph)
             {
-                await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, async () =>
+                await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
                 {
                     MyPlayer.MediaPlayer.Pause();
                 });
@@ -221,7 +221,7 @@ namespace ThisApp.Controls
 
             if (AppData.Settings.AudioPlayMode == Settings.AudioPlayModeType.Paragraph)
             {
-                await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, async () =>
+                await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
                 {
                     MyPlayer.MediaPlayer.Play();
                 });
@@ -250,7 +250,7 @@ namespace ThisApp.Controls
             Dbg.d("MediaPlayer_MediaEnded " + _curParagraph);
             if (AppData.Settings.AudioPlayMode == Settings.AudioPlayModeType.All)
             {
-                await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, async () =>
+                await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
                 {
                     Tuple<int, int> tuple = _chapter.NextChapter();
                     if (tuple != null)
@@ -260,7 +260,7 @@ namespace ThisApp.Controls
         }
         private async void CommandManager_PreviousReceived(MediaPlaybackCommandManager sender, MediaPlaybackCommandManagerPreviousReceivedEventArgs args)
         {
-            await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, async () =>
+            await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
             {
                 Tuple<int, int> tuple = _chapter.PreviousChapter();
                 if (tuple != null)
@@ -270,7 +270,7 @@ namespace ThisApp.Controls
 
         private async void CommandManager_NextReceived(MediaPlaybackCommandManager sender, MediaPlaybackCommandManagerNextReceivedEventArgs args)
         {
-            await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, async () =>
+            await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
             {
                 Tuple<int, int> tuple = _chapter.NextChapter();
                 if (tuple != null)

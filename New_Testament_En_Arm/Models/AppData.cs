@@ -10,7 +10,7 @@ using Windows.Storage;
 
 namespace ThisApp.Models
 {
-    public class AppData
+    public static class AppData
     {
         public static Settings Settings { get; private set; }
         public static List<Chapter> Chapters { get; private set; }
