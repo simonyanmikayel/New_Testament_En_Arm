@@ -23,7 +23,7 @@
     <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
     <GenerateTestArtifacts>True</GenerateTestArtifacts>
     <AppxBundle>Always</AppxBundle>
-    <AppxBundlePlatforms>x86|x64|arm|arm64</AppxBundlePlatforms>
+    <AppxBundlePlatforms>x86|x64</AppxBundlePlatforms>
     <HoursBetweenUpdateChecks>0</HoursBetweenUpdateChecks>
     <PackageCertificateThumbprint>6A136E9748D16C6839547F7CC8E0F67412C58132</PackageCertificateThumbprint>
   </PropertyGroup>
@@ -680,6 +680,7 @@
     <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Titus\Titus3_e.mp3" />
     <Content Include="Assets\New_Testament_in_English_and_Armenian\style\book - Copy.css" />
     <Content Include="Assets\New_Testament_in_English_and_Armenian\style\book.css" />
+    <Content Include="ReadMe.txt" />
     <None Include="Package.StoreAssociation.xml" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
