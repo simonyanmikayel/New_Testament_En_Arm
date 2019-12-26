@@ -1,12 +1,12 @@
 ﻿using System;
-using ThisApp.Models;
+using NewTestamentEnArm.Models;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 
-namespace ThisApp
+namespace NewTestamentEnArm
 {
     /// <summary>
     /// Provides application-specific behavior to supplement the default Application class.

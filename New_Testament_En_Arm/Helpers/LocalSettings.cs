@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ThisApp.Extensions;
+using NewTestamentEnArm.Extensions;
 using Windows.Foundation.Collections;
 using Windows.Storage;
 
-namespace ThisApp.Helpers
+namespace NewTestamentEnArm.Helpers
 {
     public static class LocalSettings
     {

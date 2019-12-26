@@ -11,14 +11,14 @@ using Helpers;
 using Windows.UI.ViewManagement;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using ThisApp.Models;
+using NewTestamentEnArm.Models;
 using System.Diagnostics;
 using System.Globalization;
-using ThisApp.Controls;
+using NewTestamentEnArm.Controls;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
-namespace ThisApp.Views
+namespace NewTestamentEnArm.Views
 {
     public sealed partial class MainPage : Page, INotifyPropertyChanged
     {

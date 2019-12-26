@@ -1,11 +1,11 @@
 ﻿<Page
-    x:Class="ThisApp.Views.MainPage"
+    x:Class="NewTestamentEnArm.Views.MainPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:ThisApp"
-    xmlns:models="using:ThisApp.Models"
-    xmlns:controls="using:ThisApp.Controls"
-    xmlns:helpers="using:ThisApp.Helpers"
+    xmlns:local="using:NewTestamentEnArm"
+    xmlns:models="using:NewTestamentEnArm.Models"
+    xmlns:controls="using:NewTestamentEnArm.Controls"
+    xmlns:helpers="using:NewTestamentEnArm.Helpers"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:toolkit="using:Microsoft.Toolkit.Uwp.UI.Controls"
@@ -34,7 +34,7 @@
             <Setter Property="Margin" Value="8,14,8,5" />
             <Setter Property="Padding" Value="8,4,8,5" />
         </Style>
-        <helpers:EnumAndNumberConverter xmlns:converter="ThisApp.Helpers" x:Key="EnumConverter"/>
+        <helpers:EnumAndNumberConverter xmlns:converter="NewTestamentEnArm.Helpers" x:Key="EnumConverter"/>
     </Page.Resources>
 
     <Grid KeyboardAcceleratorPlacementMode="Hidden">

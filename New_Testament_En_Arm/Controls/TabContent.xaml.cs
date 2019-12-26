@@ -1,4 +1,4 @@
-﻿using ThisApp.Models;
+﻿using NewTestamentEnArm.Models;
 using System;
 using System.Globalization;
 using WebViewRuntimeComponent;
@@ -7,11 +7,11 @@ using Windows.Media.Core;
 using Windows.Media.Playback;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using ThisApp.Helpers;
-using ThisApp.Views;
+using NewTestamentEnArm.Helpers;
+using NewTestamentEnArm.Views;
 using Windows.UI.Xaml.Media;
 
-namespace ThisApp.Controls
+namespace NewTestamentEnArm.Controls
 {
     public sealed partial class TabContent : UserControl, IWebViewEventHandler
     {

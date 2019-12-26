@@ -7,12 +7,12 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
-using ThisApp.Extensions;
-using ThisApp.Helpers;
+using NewTestamentEnArm.Extensions;
+using NewTestamentEnArm.Helpers;
 using Windows.Storage;
 using Windows.UI.Xaml.Media;
 
-namespace ThisApp.Models
+namespace NewTestamentEnArm.Models
 {
     public class Settings : INotifyPropertyChanged
     {

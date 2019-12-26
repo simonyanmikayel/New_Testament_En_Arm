@@ -1,10 +1,10 @@
 ﻿using Microsoft.Toolkit.Uwp.UI.Controls;
 using System;
-using ThisApp.Controls;
+using NewTestamentEnArm.Controls;
 using Windows.UI.Xaml.Controls;
-using ThisApp.Models;
+using NewTestamentEnArm.Models;
 
-namespace ThisApp.Controls
+namespace NewTestamentEnArm.Controls
 {
     public class CustomTabViewItem : TabViewItem
     {

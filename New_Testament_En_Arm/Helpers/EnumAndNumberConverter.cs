@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Windows.UI.Xaml.Data;
 
-namespace ThisApp.Helpers
+namespace NewTestamentEnArm.Helpers
 {
     public class EnumAndNumberConverter : IValueConverter
     {

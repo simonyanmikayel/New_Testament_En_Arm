@@ -9,7 +9,7 @@
   <Identity
     Name="42558MikayelSimonyan.BilingualNewTestamentEnglish-"
     Publisher="CN=DA5D60EE-2A7A-499B-A8E7-A74E7F2F506D"
-    Version="1.0.10.0" />
+    Version="1.0.13.0" />
 
   <mp:PhoneIdentity PhoneProductId="07c3f17d-7aa9-463a-bf00-f28c2e623dad" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
@@ -30,7 +30,7 @@
   <Applications>
     <Application Id="App"
       Executable="$targetnametoken$.exe"
-      EntryPoint="ThisApp.App">
+      EntryPoint="NewTestamentEnArm.App">
       <uap:VisualElements
         DisplayName="Bilingual New Testament, English - Armenian"
         Square150x150Logo="Assets\Square150x150Logo.png"

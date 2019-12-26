@@ -4,11 +4,11 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ThisApp.Extensions;
-using ThisApp.Helpers;
+using NewTestamentEnArm.Extensions;
+using NewTestamentEnArm.Helpers;
 using Windows.Storage;
 
-namespace ThisApp.Models
+namespace NewTestamentEnArm.Models
 {
     public static class AppData
     {

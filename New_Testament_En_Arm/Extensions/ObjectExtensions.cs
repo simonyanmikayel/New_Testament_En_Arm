@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ThisApp.Extensions
+namespace NewTestamentEnArm.Extensions
 {
     public static class ObjectExtensions
     {
