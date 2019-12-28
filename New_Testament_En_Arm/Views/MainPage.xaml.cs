@@ -15,6 +15,8 @@ using NewTestamentEnArm.Models;
 using System.Diagnostics;
 using System.Globalization;
 using NewTestamentEnArm.Controls;
+using Windows.UI.Xaml.Navigation;
+using NewTestamentEnArm.Helpers;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -23,18 +25,9 @@ namespace NewTestamentEnArm.Views
     public sealed partial class MainPage : Page, INotifyPropertyChanged
     {
         public Settings Settings { get; }
-        TickEvent _tickEvent = new TickEvent();
+        private DispatcherTimerTick _tickEvent = new DispatcherTimerTick();
+        //private ThreadPoolTimerTick _tickEvent = new ThreadPoolTimerTick();
         public static MainPage TheMainPage { get; private set; }
-
-        public bool IsFullScreen
-        {
-            get { return (bool)GetValue(IsFullScreenProperty); }
-            set { SetValue(IsFullScreenProperty, value); }
-        }
-
-        // Using a DependencyProperty as the backing store for IsFullScreen.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty IsFullScreenProperty =
-            DependencyProperty.Register(nameof(IsFullScreen), typeof(bool), typeof(MainPage), new PropertyMetadata(false));
 
         public AppMenu AppMenu { get; private set; }
 
@@ -64,21 +57,19 @@ namespace NewTestamentEnArm.Views
             // Listen for Fullscreen Changes from Shift+Win+Enter or our F11 shortcut
             ApplicationView.GetForCurrentView().VisibleBoundsChanged += this.MainPage_VisibleBoundsChanged;
 
-        }
-        private void Page_Loaded(object sender, RoutedEventArgs e)
-        {
-            _tickEvent.Triger(() => 
+            if (AppData.SavedChapter == null)
             {
-                int selectedIndex = AppData.SelectedIndex;
-                foreach (Chapter chapter in AppData.Chapters)
-                {
-                    MyTabView.Items.Add(new CustomTabViewItem(chapter));
-                }
-                _tickEvent.Triger(() => 
-                {
-                    MyTabView.SelectedIndex = selectedIndex;
-                });
-            });
+                WelcomeBubble.Visibility = Visibility.Visible;
+                AddTabButton.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                SetTabItem(AppData.SavedChapter.BookNumber, AppData.SavedChapter.ChapterNumber, AppData.SavedChapter.Paragraph, true);
+                AppData.SavedChapter = null;
+            }
+        }
+        private  void Page_Loaded(object sender, RoutedEventArgs e)
+        {
         }
 
         private void ApplyUiColors()
@@ -122,6 +113,12 @@ namespace NewTestamentEnArm.Views
         #endregion
 
         #region Handle FullScreen
+        bool _IsFullScreen;
+        public bool IsFullScreen
+        {
+            get { return _IsFullScreen; }
+            set { Set<bool>(ref _IsFullScreen, value); }
+        }
         private void MainPage_VisibleBoundsChanged(ApplicationView sender, object args)
         {
             // Update Fullscreen from other modes of adjusting view (keyboard shortcuts)
@@ -134,12 +131,11 @@ namespace NewTestamentEnArm.Views
             // Toggle FullScreen from F11 Keyboard Shortcut
             if (!IsFullScreen)
             {
-                IsFullScreen = ApplicationView.GetForCurrentView().TryEnterFullScreenMode();
+                ApplicationView.GetForCurrentView().TryEnterFullScreenMode();
             }
             else
             {
                 ApplicationView.GetForCurrentView().ExitFullScreenMode();
-                IsFullScreen = false;
             }
         }
 
@@ -168,18 +164,39 @@ namespace NewTestamentEnArm.Views
         #endregion
 
         #region Tab items
+        TabContent _ActiveTabContent;
+        public TabContent ActiveTabContent { 
+            get
+            {
+                return _ActiveTabContent;
+            }
+            private set
+            {
+                Set<TabContent>(ref _ActiveTabContent, value);
+            }
+        }
         private void AddTabButtonClick(object sender, RoutedEventArgs e)
         {
-           SetTabItem(AppData.SelectedChapter.BookNumber, AppData.SelectedChapter.ChapterNumber, true);
+            if (AppData.Chapters.Count > 0)
+                SetTabItem(AppData.SelectedChapter.BookNumber, AppData.SelectedChapter.ChapterNumber, 0, true);
+            else
+                SetTabItem(0, 0, 0, true);
         }
 
-        public void SetTabItem(int bookNumber, int chapterNumber, bool newTab)
+        public void SetTabItem(int bookNumber, int chapterNumber, int paragraphNumber, bool newTab)
         {
-            Chapter chapter = new Chapter(bookNumber, chapterNumber, 0);
-            if (newTab)
+            if (WelcomeBubble.Visibility == Visibility.Visible)
+            {
+                WelcomeBubble.Visibility = Visibility.Collapsed;
+                AddTabButton.Visibility = Visibility.Visible;
+            }
+            Chapter chapter = new Chapter(bookNumber, chapterNumber, paragraphNumber);
+            CustomTabViewItem tabViewItem = new CustomTabViewItem(chapter);
+            if (newTab || AppData.Chapters.Count == 0)
             {
                 AppData.AddChapter(chapter);
-                MyTabView.Items.Add(new CustomTabViewItem(chapter));
+                AppData.SetSelectedChapter(chapter);
+                MyTabView.Items.Add(tabViewItem);
                 _tickEvent.Triger(() =>
                 {
                     MyTabView.SelectedIndex = MyTabView.Items.Count - 1;
@@ -188,11 +205,12 @@ namespace NewTestamentEnArm.Views
             else
             {
                 AppData.Chapters[AppData.SelectedIndex] = chapter;
-                MyTabView.Items[AppData.SelectedIndex] = new CustomTabViewItem(chapter);
+                MyTabView.Items[AppData.SelectedIndex] = tabViewItem;
+                ApplicationView.GetForCurrentView().Title = tabViewItem.Header.ToString();
+                //ActiveTabContent = tabViewItem.TabContent;
                 _tickEvent.Triger(() =>
                 {
-                    CustomTabViewItem selectedTabItem = MyTabView.Items[AppData.SelectedIndex] as CustomTabViewItem;
-                    MyTabView.SelectedItem = selectedTabItem;
+                    MyTabView.SelectedIndex = AppData.SelectedIndex;
                 });
             }
         }
@@ -201,14 +219,17 @@ namespace NewTestamentEnArm.Views
             var addedItem = e.AddedItems.FirstOrDefault();
             if (addedItem is CustomTabViewItem addedTabItem)
             {
+                ActiveTabContent = addedTabItem.TabContent;
                 AppData.SetSelectedChapter(addedTabItem.Chapter);
                 ApplicationView.GetForCurrentView().Title = addedTabItem.Header.ToString();
+                Dbg.d("chapter.ID " + addedTabItem.Chapter.Id);
             }
         }
         private void TabClosing(object sender, TabClosingEventArgs e)
         {
             if (AppData.Chapters.Count == 1)
             {
+                AppData.SaveChapters();
                 CoreApplication.Exit();
             }
             else if (e.Item is CustomTabViewItem closedTabItem)
@@ -232,7 +253,7 @@ namespace NewTestamentEnArm.Views
         private void MenuItem_Click(object sender, EventArgs e)
         {
             AppMenuItem menuItem = sender as AppMenuItem;
-            SetTabItem(menuItem.BookNumber, menuItem.ChapterNumber, false);
+            SetTabItem(menuItem.BookNumber, menuItem.ChapterNumber, 0, false);
         }
         #endregion
     }

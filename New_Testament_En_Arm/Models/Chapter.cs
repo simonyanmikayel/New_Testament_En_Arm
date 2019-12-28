@@ -13,10 +13,10 @@ namespace NewTestamentEnArm.Models
         public int ChapterNumber { get; }
         public int Paragraph { get; set; }
         static int _objectNN;
-        public int ID { get; }
+        public int Id { get; }
         public Chapter(int bookNumber, int chapterNumber, int paragraph)
         {
-            ID = ++_objectNN;
+            Id = ++_objectNN;
             if (bookNumber < 0 || bookNumber > Book.BookList.Length)
                 bookNumber = 0;
             BookNumber = bookNumber;

@@ -21,9 +21,11 @@ namespace NewTestamentEnArm.Models
         static AppData()
         {
             Settings = new Settings();
+            Chapters = new List<Chapter>();
             LoadChapters();
         }
-       
+
+        public static Chapter SavedChapter{ get; set; }
         public static Chapter SelectedChapter 
         { 
             get 
@@ -38,7 +40,7 @@ namespace NewTestamentEnArm.Models
             int index = Chapters.IndexOf(chapter);
             Debug.Assert(index >= 0);
             SelectedIndex = index;
-            Dbg.d("chapter.ID " + chapter.ID + " index " + index);
+            Dbg.d("chapter.ID " + chapter.Id + " index " + SelectedIndex);
         }
         public static void AddChapter(Chapter chapter)
         {
@@ -53,50 +55,28 @@ namespace NewTestamentEnArm.Models
         #region serialisation
         public static void SaveChapters()
         {
-            Windows.Storage.ApplicationDataCompositeValue composite = new Windows.Storage.ApplicationDataCompositeValue();
-            composite[nameof(SelectedIndex)] = SelectedIndex;
-            composite["count"] = Chapters.Count;
-            for (int i = 0; i < Chapters.Count; i++)
+            if (Chapters.Count > SelectedIndex)
             {
-                composite["bookNumber" + i] = Chapters[i].BookNumber;
-                composite["chapterNumber" + i] = Chapters[i].ChapterNumber;
-                composite["paragraph" + i] = Chapters[i].Paragraph;
+                Windows.Storage.ApplicationDataCompositeValue composite = new Windows.Storage.ApplicationDataCompositeValue();
+                composite["bookNumber"] = Chapters[SelectedIndex].BookNumber;
+                composite["chapterNumber"] = Chapters[SelectedIndex].ChapterNumber;
+                composite["paragraph"] = Chapters[SelectedIndex].Paragraph;
+                LocalSettings.Values["chapter"] = composite;
             }
-            LocalSettings.Values[nameof(Chapters)] = composite;
         }
         private static void LoadChapters()
         {
-            Windows.Storage.ApplicationDataCompositeValue composite = (ApplicationDataCompositeValue)LocalSettings.Values[nameof(Chapters)];
-            while (composite != null)
+            Windows.Storage.ApplicationDataCompositeValue composite = (ApplicationDataCompositeValue)LocalSettings.Values["chapter"];
+            if (composite != null)
             {
-                SelectedIndex = composite[nameof(SelectedIndex)].GetInt(0);
-                int count = composite["count"].GetInt(0);
-                if (count == 0 || SelectedIndex < 0 || SelectedIndex >= count)
-                    break;
-                Chapters = new List<Chapter>();
-                for (int i = 0; i < count; i++)
+                if ((composite["bookNumber"] is int bookNumber) &&
+                    (composite["chapterNumber"] is int chapterNumber) &&
+                     composite["paragraph"] is int paragraph)
                 {
-                    if( (composite["bookNumber"+i] is int bookNumber) && 
-                        (composite["chapterNumber"+i] is int chapterNumber) &&
-                         composite["paragraph" + i] is int paragraph)
-                    {
-                        Chapter chapter = new Chapter(bookNumber, chapterNumber, paragraph);
-                        AddChapter(chapter);
-                    }
-                    else
-                    {
-                        Chapters = null;
-                        break;
-                    }
+                    if (bookNumber < Book.BookList.Length && 
+                        chapterNumber < Book.BookList[bookNumber].ChapterCount)
+                        SavedChapter = new Chapter(bookNumber, chapterNumber, paragraph);
                 }
-                break;
-            }
-            if (Chapters == null)
-            {
-                Chapters = new List<Chapter>();
-                Chapter chapter = new Chapter(0, 0, 0);
-                AddChapter(chapter);
-                SelectedIndex = 0;
             }
         }
         #endregion

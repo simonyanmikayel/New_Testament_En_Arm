@@ -37,14 +37,8 @@
         <helpers:EnumAndNumberConverter xmlns:converter="NewTestamentEnArm.Helpers" x:Key="EnumConverter"/>
     </Page.Resources>
 
-    <Grid KeyboardAcceleratorPlacementMode="Hidden">
-        <Grid.KeyboardAccelerators>
-            <KeyboardAccelerator
-                            Modifiers="None"
-                            Key="F11"
-                            Invoked="AppFullScreenShortcut"/>
-        </Grid.KeyboardAccelerators>
-
+    <Grid
+        x:Name="MainGrid">
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup x:Name="FullScreenStates">
                 <VisualState x:Name="Default">
@@ -52,7 +46,7 @@
                         <!--<Setter Target="AppTitleBar.Background" Value="Transparent"/>-->
                         <Setter Target="ContentPresenter.(Grid.Row)" Value="1" />
                         <Setter Target="ContentPresenter.(Grid.RowSpan)" Value="1" />
-                        <Setter Target="FullScreenButton.Visibility" Value="Visible" />
+                        <!--<Setter Target="FullScreenButton.Visibility" Value="Visible" />-->
                     </VisualState.Setters>
                 </VisualState>
                 <VisualState x:Name="FullScreen">
@@ -60,7 +54,7 @@
                         <!--<Setter Target="AppTitleBar.Background" Value="{x:Bind  Settings.UiBrush, Mode=OneWay}"/>-->
                         <Setter Target="ContentPresenter.(Grid.Row)" Value="0" />
                         <Setter Target="ContentPresenter.(Grid.RowSpan)" Value="2" />
-                        <Setter Target="FullScreenButton.Visibility" Value="Collapsed" />
+                        <!--<Setter Target="FullScreenButton.Visibility" Value="Collapsed" />-->
                     </VisualState.Setters>
                     <VisualState.StateTriggers>
                         <StateTrigger IsActive="{x:Bind IsFullScreen, Mode=OneWay}"/>
@@ -82,7 +76,7 @@
 
         <!-- Our main content, we'll move this up in the grid when we're fullscreen with the VSM above. -->
         <ContentPresenter x:Name="ContentPresenter" Grid.Row="1" Grid.ColumnSpan="3" 
-                          Content="{x:Bind ((controls:CustomTabViewItem)MyTabView.SelectedItem).TabContent, Mode=OneWay}"/>
+                          Content="{x:Bind ActiveTabContent, Mode=OneWay}"/>
 
         <!-- This is a 'dummy' blank area to actually capture mouse events that are needed to drag the window around. -->
         <Grid x:Name="AppTitleBar"
@@ -130,6 +124,7 @@
                         Margin="0,0,-1,0"
                         BorderThickness="1"
                         Background="Transparent" 
+                        ToolTipService.ToolTip="Table of Contents"
                         Style="{StaticResource ButtonRevealStyle}"
                         FlyoutBase.AttachedFlyout="{x:Bind Path=AppMenu}"
                         Click="MenuButtonClick"
@@ -143,12 +138,14 @@
             <toolkit:TabView.TabActionHeader>
                 <StackPanel Orientation="Horizontal">
                     <Button 
+                        x:Name="AddTabButton"
                         Click="AddTabButtonClick"
                         Width="{StaticResource TabViewHeaderButtonWidth}"
                         Height="{StaticResource TabViewItemHeaderHeight}"
                         Margin="-1,0,0,0"
                         BorderThickness="1"
                         Background="Transparent"
+                        ToolTipService.ToolTip="New Tab"
                         Style="{StaticResource ButtonRevealStyle}">
                         <Viewbox MaxWidth="16" MaxHeight="16">
                             <SymbolIcon Symbol="Add"/>
@@ -165,6 +162,7 @@
                         Margin="-1,0,0,0"
                         BorderThickness="1" 
                         Background="Transparent"
+                        ToolTipService.ToolTip="Settings"
                         Style="{StaticResource ButtonRevealStyle}">
                         <Viewbox MaxWidth="16" MaxHeight="16">
                             <SymbolIcon Symbol="Setting"/>
@@ -228,7 +226,15 @@
                         Margin="-1,0,0,0"
                         BorderThickness="1" 
                         Background="Transparent" 
+                        ToolTipService.ToolTip="Full Screen"
                         Style="{StaticResource ButtonRevealStyle}">
+                        <!--<Button.KeyboardAccelerators>
+                            <KeyboardAccelerator
+                                ScopeOwner="{x:Bind MainGrid}"
+                                Modifiers="None"
+                                Key="F11"
+                                Invoked="AppFullScreenShortcut"/>
+                        </Button.KeyboardAccelerators>-->
                         <Viewbox MaxWidth="16" MaxHeight="16">
                             <SymbolIcon Symbol="FullScreen"/>
                         </Viewbox>
@@ -236,5 +242,33 @@
                 </StackPanel>
             </toolkit:TabView.TabEndHeader>
         </toolkit:TabView>
+        
+        <StackPanel 
+            x:Name="WelcomeBubble"
+            Grid.Column="1"
+            Visibility="Collapsed"
+            Orientation="Horizontal"
+            HorizontalAlignment="Left"
+            Margin="40,40,0,0">
+            
+            <Polygon 
+                Points="0,0 35,25 35,65"
+                Fill="LightBlue"/>
+
+            <Border Background="LightBlue"
+            CornerRadius="10"
+            Padding="6"
+            Margin="0,15,0,0"
+            VerticalAlignment="Top">
+                
+                <TextBlock 
+                    Text="Please, select the table of contents icon and select a chapter to read."
+                    TextWrapping="WrapWholeWords"
+                    Width="200"
+                    Height="110"
+                    Padding="6"
+                    FontSize="18"/>
+            </Border>
+        </StackPanel>
     </Grid>
 </Page>

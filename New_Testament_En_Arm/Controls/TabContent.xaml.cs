@@ -25,7 +25,7 @@ namespace NewTestamentEnArm.Controls
         Chapter _chapter;
         static int _objectNN;
         int _objectID;
-        bool _firstLoaded = true;
+        bool _initialParagraphSelected = false;
         
         public TabContent(Chapter chapter)
         {
@@ -72,25 +72,24 @@ namespace NewTestamentEnArm.Controls
 
         private async void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-            Dbg.d();
+            //Dbg.d();
             MyPlayer.MediaPlayer.PlaybackSession.PositionChanged += PlaybackSession_PositionChanged;
             MyPlayer.MediaPlayer.MediaEnded += MediaPlayer_MediaEnded;
-            if (_firstLoaded)
+
+            if (_initialParagraphSelected)
             {
-                await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
+                if (AppData.Settings.AudioPlayMode != Settings.AudioPlayModeType.None)
                 {
-                    if (_chapter.Paragraph > 0)
-                        SetPlaybackPos(_chapter.Paragraph);
-                    else
-                        _firstLoaded = false;
-                });
+                    await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
+                    {
+                        MyPlayer.MediaPlayer.Play();
+                    });
+                }
             }
-            if (AppData.Settings.AudioPlayMode != Settings.AudioPlayModeType.None)
-                MyPlayer.MediaPlayer.Play();
         }
         private void UserControl_Unloaded(object sender, RoutedEventArgs e)
         {
-            Dbg.d();
+            //Dbg.d();
             MyPlayer.MediaPlayer.Pause();
             MyPlayer.MediaPlayer.PlaybackSession.PositionChanged -= PlaybackSession_PositionChanged;
             MyPlayer.MediaPlayer.MediaEnded -= MediaPlayer_MediaEnded;
@@ -99,7 +98,7 @@ namespace NewTestamentEnArm.Controls
         {
             if (_soundPosString == null || _NaturalDuration <= 0)
                 return;
-            Dbg.d();
+            //Dbg.d();
 
             String[] strlist = _soundPosString.Split(',');
             _soundPosList = new double[strlist.Length];
@@ -112,11 +111,12 @@ namespace NewTestamentEnArm.Controls
                 TimeSpan timeSpan = new TimeSpan(pos);
                 _soundPosList[i] = timeSpan.TotalMilliseconds;
             }
+            SetPlaybackPos(_chapter.Paragraph);
         }
         private void PlaybackSession_NaturalDurationChanged(MediaPlaybackSession sender, object args)
         {
             _NaturalDuration = sender.NaturalDuration.TotalMilliseconds;
-            Dbg.d("_NaturalDuration = " + _NaturalDuration);
+            //Dbg.d("_NaturalDuration = " + _NaturalDuration);
             InitSoundList();
         }
         private int paragraphBySoundPos(double pos)
@@ -160,9 +160,9 @@ namespace NewTestamentEnArm.Controls
             _scrollArgs[0] = par.ToString(inv);
             await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, async () =>
             {
-                if (_firstLoaded)
+                if (!_initialParagraphSelected)
                 {
-                    _firstLoaded = false;
+                    _initialParagraphSelected = true;
                     await MyWebView.InvokeScriptAsync("restore_pos", _scrollArgs);
                 }
                 else
@@ -188,7 +188,7 @@ namespace NewTestamentEnArm.Controls
 
             _curParagraph = par;
             _chapter.Paragraph = par;
-            Dbg.d("_curParagraph " + _curParagraph);
+            //Dbg.d("_curParagraph " + _curParagraph);
 
             //if (AppData.Settings.ScrollMode != Settings.Scroll.None)
             scrollToPar(par);
@@ -212,20 +212,23 @@ namespace NewTestamentEnArm.Controls
         private async void SetPlaybackPos(int par)
         {
             Dbg.d("par " + par);
-            if (_soundPosList == null || par < 0 || par >= _soundPosList.Length)
+            if (_soundPosList == null || _soundPosList.Length == 0)
                 return;
-            //1ms = 1000000ns, TimeSpan gets 100ns
-            long pos = (long)(_soundPosList[par] * 10000);
-            MyPlayer.MediaPlayer.PlaybackSession.Position = new TimeSpan(pos);
-            double pos2 = MyPlayer.MediaPlayer.PlaybackSession.Position.TotalMilliseconds;
 
-            if (AppData.Settings.AudioPlayMode == Settings.AudioPlayModeType.Paragraph)
+            if (par < 0 || par >= _soundPosList.Length)
+                par = 0;
+
+            await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
             {
-                await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
+                //1ms = 1000000ns, TimeSpan gets 100ns
+                //double pos2 = MyPlayer.MediaPlayer.PlaybackSession.Position.TotalMilliseconds;
+                long pos = (long)(_soundPosList[par] * 10000);
+                MyPlayer.MediaPlayer.PlaybackSession.Position = new TimeSpan(pos);
+                if (AppData.Settings.AudioPlayMode != Settings.AudioPlayModeType.None)
                 {
                     MyPlayer.MediaPlayer.Play();
-                });
-            }
+                }
+            });
         }
         public void OnParagraphClick(int par, String dbgInfo)
         {
@@ -233,7 +236,7 @@ namespace NewTestamentEnArm.Controls
         }
         public void OnHtmlLoaded(string soundPosString)
         {
-            Dbg.d();
+            //Dbg.d();
             if (soundPosString == null)
                 return;
             _soundPosString = soundPosString;
@@ -242,19 +245,19 @@ namespace NewTestamentEnArm.Controls
         }
         public string GetSettings()
         {
-            Dbg.d();
+            //Dbg.d();
             return AppData.Settings.GetSettings();
         }
         private async void MediaPlayer_MediaEnded(MediaPlayer sender, object args)
         {
-            Dbg.d("MediaPlayer_MediaEnded " + _curParagraph);
+            //Dbg.d("MediaPlayer_MediaEnded " + _curParagraph);
             if (AppData.Settings.AudioPlayMode == Settings.AudioPlayModeType.All)
             {
                 await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
                 {
                     Tuple<int, int> tuple = _chapter.NextChapter();
                     if (tuple != null)
-                        MainPage.TheMainPage.SetTabItem(tuple.Item1, tuple.Item2, false);
+                        MainPage.TheMainPage.SetTabItem(tuple.Item1, tuple.Item2, 0, false);
                 });
             }
         }
@@ -264,7 +267,7 @@ namespace NewTestamentEnArm.Controls
             {
                 Tuple<int, int> tuple = _chapter.PreviousChapter();
                 if (tuple != null)
-                    MainPage.TheMainPage.SetTabItem(tuple.Item1, tuple.Item2, false);
+                    MainPage.TheMainPage.SetTabItem(tuple.Item1, tuple.Item2, 0, false);
             });
         }
 
@@ -274,7 +277,7 @@ namespace NewTestamentEnArm.Controls
             {
                 Tuple<int, int> tuple = _chapter.NextChapter();
                 if (tuple != null)
-                    MainPage.TheMainPage.SetTabItem(tuple.Item1, tuple.Item2, false);
+                    MainPage.TheMainPage.SetTabItem(tuple.Item1, tuple.Item2, 0, false);
             });
         }
 

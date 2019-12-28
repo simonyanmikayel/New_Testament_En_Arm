@@ -9,13 +9,13 @@ namespace NewTestamentEnArm.Controls
     public class CustomTabViewItem : TabViewItem
     {
         static int _objectNN;
-        int _objectID;
+        public int Id { get; }
         public Chapter Chapter { get; }
 
         public CustomTabViewItem(Chapter chapter)
         {
             //this.DefaultStyleKey = typeof(CustomTabViewItem);
-            _objectID = ++_objectNN;
+            Id = ++_objectNN;
             Chapter = chapter;
             Header = Chapter.BookTabHeader();
             //Icon = new SymbolIcon(Symbol.Document);

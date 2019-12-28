@@ -8,14 +8,14 @@ using Windows.UI.Xaml;
 
 namespace Helpers
 {
-    class TickEvent
+    class DispatcherTimerTick
     {
         //private System.Timers.Timer _timer = new System.Timers.Timer();
         private DispatcherTimer _timer = new DispatcherTimer();
 
         public delegate void OnTick();
         private OnTick _onTick;
-        public TickEvent()
+        public DispatcherTimerTick()
         {
             //_timer.Interval = 1;
             //_timer.Elapsed += new System.Timers.ElapsedEventHandler(Timer_Elapsed);

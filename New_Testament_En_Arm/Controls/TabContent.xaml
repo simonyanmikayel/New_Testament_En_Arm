@@ -35,7 +35,6 @@
                     IsFastRewindButtonVisible="False"
                     IsPlaybackRateButtonVisible="False"
                     IsFullWindowButtonVisible="False"
-                    IsCompactOverlayButtonVisible="False"
                     IsZoomButtonVisible="False"
                     IsRepeatButtonVisible="False"/>
             </MediaPlayerElement.TransportControls>

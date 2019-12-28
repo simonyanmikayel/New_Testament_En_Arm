@@ -12,7 +12,7 @@
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetPlatformVersion Condition=" '$(TargetPlatformVersion)' == '' ">10.0.18362.0</TargetPlatformVersion>
-    <TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
+    <TargetPlatformMinVersion>10.0.17134.0</TargetPlatformMinVersion>
     <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -23,9 +23,10 @@
     <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
     <GenerateTestArtifacts>True</GenerateTestArtifacts>
     <AppxBundle>Always</AppxBundle>
-    <AppxBundlePlatforms>x64</AppxBundlePlatforms>
+    <AppxBundlePlatforms>x86|x64</AppxBundlePlatforms>
     <HoursBetweenUpdateChecks>0</HoursBetweenUpdateChecks>
-    <PackageCertificateThumbprint>73CFA7BC521959347382A5A2989F27C5EE247281</PackageCertificateThumbprint>
+    <PackageCertificateThumbprint>AD340C5B44ABE837BE7F9A8E8D38FB0004BEFB8D</PackageCertificateThumbprint>
+    <PackageCertificateKeyFile />
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <DebugSymbols>true</DebugSymbols>
@@ -134,7 +135,8 @@
     <Compile Include="Helpers\Dbg.cs" />
     <Compile Include="Helpers\EnumAndNumberConverter.cs" />
     <Compile Include="Helpers\LocalSettings.cs" />
-    <Compile Include="Helpers\TickEvent.cs" />
+    <Compile Include="Helpers\DispatcherTimerTick.cs" />
+    <Compile Include="Helpers\ThreadPoolTimerTick.cs" />
     <Compile Include="Models\AppData.cs" />
     <Compile Include="Models\AppMenu.cs" />
     <Compile Include="Models\Book.cs" />
