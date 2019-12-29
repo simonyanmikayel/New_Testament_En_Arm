@@ -23,7 +23,7 @@
     <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
     <GenerateTestArtifacts>True</GenerateTestArtifacts>
     <AppxBundle>Always</AppxBundle>
-    <AppxBundlePlatforms>x86|x64</AppxBundlePlatforms>
+    <AppxBundlePlatforms>x64</AppxBundlePlatforms>
     <HoursBetweenUpdateChecks>0</HoursBetweenUpdateChecks>
     <PackageCertificateThumbprint>AD340C5B44ABE837BE7F9A8E8D38FB0004BEFB8D</PackageCertificateThumbprint>
     <PackageCertificateKeyFile />
@@ -137,6 +137,7 @@
     <Compile Include="Helpers\LocalSettings.cs" />
     <Compile Include="Helpers\DispatcherTimerTick.cs" />
     <Compile Include="Helpers\ThreadPoolTimerTick.cs" />
+    <Compile Include="Helpers\TimeStamp.cs" />
     <Compile Include="Models\AppData.cs" />
     <Compile Include="Models\AppMenu.cs" />
     <Compile Include="Models\Book.cs" />
@@ -682,6 +683,7 @@
     <Content Include="Assets\New_Testament_in_English_and_Armenian\sound\Titus\Titus3_e.mp3" />
     <Content Include="Assets\New_Testament_in_English_and_Armenian\style\book - Copy.css" />
     <Content Include="Assets\New_Testament_in_English_and_Armenian\style\book.css" />
+    <Content Include="ReadMe.txt" />
     <None Include="Package.StoreAssociation.xml" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
