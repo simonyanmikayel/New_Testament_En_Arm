@@ -86,6 +86,10 @@ namespace NewTestamentEnArm.Controls
                     });
                 }
             }
+            else
+            {
+                scrollToPar(_chapter.Paragraph);
+            }
         }
         private void UserControl_Unloaded(object sender, RoutedEventArgs e)
         {

@@ -216,7 +216,6 @@ namespace NewTestamentEnArm.Views
             var addedItem = e.AddedItems.FirstOrDefault();
             if (addedItem is TabViewItem addedTabItem)
             {
-                Debug.Assert(MyTabView.SelectedIndex == AppData.SelectedIndex);
                 AppData.SetSelectedItem(addedTabItem);
                 ApplicationView.GetForCurrentView().Title = addedTabItem.Header.ToString();
                 ActiveTabContent = AppData.CustomTabViewItems[AppData.SelectedIndex].TabContent;
