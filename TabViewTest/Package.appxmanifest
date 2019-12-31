@@ -7,15 +7,15 @@
   IgnorableNamespaces="uap mp">
 
   <Identity
-    Name="42558MikayelSimonyan.BilingualNewTestamentEnglish-"
-    Publisher="CN=DA5D60EE-2A7A-499B-A8E7-A74E7F2F506D"
-    Version="1.0.33.0" />
+    Name="7e4035f3-ec3d-4f4e-b7c1-5498c2a1dfb6"
+    Publisher="CN=Mikayel"
+    Version="1.0.0.0" />
 
-  <mp:PhoneIdentity PhoneProductId="5bb8a31c-3500-4631-a6f5-bbc520de2b63" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
+  <mp:PhoneIdentity PhoneProductId="7e4035f3-ec3d-4f4e-b7c1-5498c2a1dfb6" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
-    <DisplayName>Bilingual New Testament, English - Armenian</DisplayName>
-    <PublisherDisplayName>Mikayel Simonyan</PublisherDisplayName>
+    <DisplayName>TabViewTest</DisplayName>
+    <PublisherDisplayName>Mikayel</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
 
@@ -30,12 +30,12 @@
   <Applications>
     <Application Id="App"
       Executable="$targetnametoken$.exe"
-      EntryPoint="NewTestamentEnArm.App">
+      EntryPoint="TabViewTest.App">
       <uap:VisualElements
-        DisplayName="Bilingual New Testament, English - Armenian"
+        DisplayName="TabViewTest"
         Square150x150Logo="Assets\Square150x150Logo.png"
         Square44x44Logo="Assets\Square44x44Logo.png"
-        Description="Bilingual New Testament aoudio book in English and Armenian"
+        Description="TabViewTest"
         BackgroundColor="transparent">
         <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png"/>
         <uap:SplashScreen Image="Assets\SplashScreen.png" />

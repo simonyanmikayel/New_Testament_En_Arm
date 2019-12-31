@@ -4,6 +4,8 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Toolkit.Uwp.UI.Controls;
+using NewTestamentEnArm.Controls;
 using NewTestamentEnArm.Extensions;
 using NewTestamentEnArm.Helpers;
 using Windows.Storage;
@@ -13,7 +15,7 @@ namespace NewTestamentEnArm.Models
     public static class AppData
     {
         public static Settings Settings { get; private set; }
-        public static List<Chapter> Chapters { get; private set; }
+        public static List<CustomTabViewItem> CustomTabViewItems { get; private set; }
         public static int SelectedIndex { get; private set; }
 
         // Explicit static constructor to tell C# compiler
@@ -21,7 +23,7 @@ namespace NewTestamentEnArm.Models
         static AppData()
         {
             Settings = new Settings();
-            Chapters = new List<Chapter>();
+            CustomTabViewItems = new List<CustomTabViewItem>();
             LoadChapters();
         }
 
@@ -30,37 +32,53 @@ namespace NewTestamentEnArm.Models
         { 
             get 
             {
-                Debug.Assert(SelectedIndex < Chapters.Count);
-                return Chapters[SelectedIndex]; 
+                Debug.Assert(SelectedIndex < CustomTabViewItems.Count);
+                return CustomTabViewItems[SelectedIndex].Chapter; 
             } 
         }
-
-        public static void SetSelectedChapter(Chapter chapter)
+        public static int IndexOfItem(TabViewItem item)
         {
-            int index = Chapters.IndexOf(chapter);
-            Debug.Assert(index >= 0);
+            int index = -1;
+            for (int i = 0; i < CustomTabViewItems.Count; i++)
+            {
+                if (CustomTabViewItems[i].TabItem == item)
+                {
+                    index = i;
+                    break;
+                }
+            }
+            return index;
+        }
+        public static void SetSelectedItem(TabViewItem item)
+        {
+            int index = IndexOfItem(item);
+            Debug.Assert(index >= 0 && index < CustomTabViewItems.Count);
             SelectedIndex = index;
-            Dbg.d("chapter.ID " + chapter.Id + " index " + SelectedIndex);
         }
-        public static void AddChapter(Chapter chapter)
+        public static void AddChapter(CustomTabViewItem customTabViewItem)
         {
-            Debug.Assert(Chapters.IndexOf(chapter) < 0);
-            Chapters.Add(chapter);
+            Debug.Assert(IndexOfItem(customTabViewItem.TabItem) < 0);
+            CustomTabViewItems.Add(customTabViewItem);
         }
-        public static void RemoveChapter(Chapter chapter)
+        public static void RemoveChapter(TabViewItem item)
         {
-            Debug.Assert(Chapters.IndexOf(chapter) >= 0);
-            Chapters.Remove(chapter);
+            int index = IndexOfItem(item);
+            Debug.Assert(index >= 0);
+            CustomTabViewItems.RemoveAt(index);
+        }
+        public static int ChapterCount()
+        {
+            return CustomTabViewItems.Count;
         }
         #region serialisation
         public static void SaveChapters()
         {
-            if (Chapters.Count > SelectedIndex)
+            if (CustomTabViewItems.Count > SelectedIndex)
             {
                 Windows.Storage.ApplicationDataCompositeValue composite = new Windows.Storage.ApplicationDataCompositeValue();
-                composite["bookNumber"] = Chapters[SelectedIndex].BookNumber;
-                composite["chapterNumber"] = Chapters[SelectedIndex].ChapterNumber;
-                composite["paragraph"] = Chapters[SelectedIndex].Paragraph;
+                composite["bookNumber"] = CustomTabViewItems[SelectedIndex].Chapter.BookNumber;
+                composite["chapterNumber"] = CustomTabViewItems[SelectedIndex].Chapter.ChapterNumber;
+                composite["paragraph"] = CustomTabViewItems[SelectedIndex].Chapter.Paragraph;
                 LocalSettings.Values["chapter"] = composite;
             }
         }

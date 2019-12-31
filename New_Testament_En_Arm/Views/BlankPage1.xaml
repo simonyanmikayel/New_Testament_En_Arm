@@ -1,0 +1,28 @@
+﻿<Page
+    x:Class="NewTestamentEnArm.Views.BlankPage1"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:NewTestamentEnArm.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Viewbox>
+    <Grid Background="Aqua">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <WebView 
+            DefaultBackgroundColor="Red"
+            Source="http://www.yahoo.com"/>
+        <MediaPlayerElement Grid.Row="1" AreTransportControlsEnabled="True">
+            <MediaPlayerElement.TransportControls>
+                <MediaTransportControls
+                    IsCompact="True"/>
+            </MediaPlayerElement.TransportControls>
+        </MediaPlayerElement>
+    </Grid>
+    </Viewbox>
+</Page>

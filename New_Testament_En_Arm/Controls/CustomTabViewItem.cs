@@ -6,26 +6,28 @@ using NewTestamentEnArm.Models;
 
 namespace NewTestamentEnArm.Controls
 {
-    public class CustomTabViewItem : TabViewItem
+    public class CustomTabViewItem
     {
         static int _objectNN;
         public int Id { get; }
         public Chapter Chapter { get; }
-
+        public TabViewItem TabItem { get; }
+        public TabContent TabContent { get; }
         public CustomTabViewItem(Chapter chapter)
         {
             //this.DefaultStyleKey = typeof(CustomTabViewItem);
+            TabItem = new TabViewItem();
             Id = ++_objectNN;
             Chapter = chapter;
-            Header = Chapter.BookTabHeader();
+            TabItem.Header = Chapter.BookTabHeader();
             //Icon = new SymbolIcon(Symbol.Document);
             BitmapIcon bitmapIcon = new BitmapIcon();
             bitmapIcon.ShowAsMonochrome = false;
             bitmapIcon.UriSource = new Uri("ms-appx:///Assets/favicon.png");
-            Icon = bitmapIcon;
-            // we intentionaly left Conten uninitialized. TabContent becomes content of page
+            TabItem.Icon = bitmapIcon;
             TabContent = new TabContent(chapter);
+            // we intentionaly left Conten uninitialized. TabContent becomes content of page
+            //TabItem.Content = new TabContent(chapter);
         }
-        public TabContent TabContent { get; }
     }
 }

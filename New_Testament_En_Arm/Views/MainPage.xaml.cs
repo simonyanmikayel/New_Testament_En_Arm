@@ -177,12 +177,11 @@ namespace NewTestamentEnArm.Views
         }
         private void AddTabButtonClick(object sender, RoutedEventArgs e)
         {
-            if (AppData.Chapters.Count > 0)
+            if (AppData.ChapterCount() > 0)
                 SetTabItem(AppData.SelectedChapter.BookNumber, AppData.SelectedChapter.ChapterNumber, 0, true);
             else
                 SetTabItem(0, 0, 0, true);
         }
-
         public void SetTabItem(int bookNumber, int chapterNumber, int paragraphNumber, bool newTab)
         {
             if (WelcomeBubble.Visibility == Visibility.Visible)
@@ -191,12 +190,12 @@ namespace NewTestamentEnArm.Views
                 AddTabButton.Visibility = Visibility.Visible;
             }
             Chapter chapter = new Chapter(bookNumber, chapterNumber, paragraphNumber);
-            CustomTabViewItem tabViewItem = new CustomTabViewItem(chapter);
-            if (newTab || AppData.Chapters.Count == 0)
+            CustomTabViewItem customTabViewItem = new CustomTabViewItem(chapter);
+            if (newTab || AppData.ChapterCount() == 0)
             {
-                AppData.AddChapter(chapter);
-                AppData.SetSelectedChapter(chapter);
-                MyTabView.Items.Add(tabViewItem);
+                AppData.AddChapter(customTabViewItem);
+                AppData.SetSelectedItem(customTabViewItem.TabItem);
+                MyTabView.Items.Add(customTabViewItem.TabItem);
                 _tickEvent.Triger(() =>
                 {
                     MyTabView.SelectedIndex = MyTabView.Items.Count - 1;
@@ -204,10 +203,8 @@ namespace NewTestamentEnArm.Views
             }
             else
             {
-                AppData.Chapters[AppData.SelectedIndex] = chapter;
-                MyTabView.Items[AppData.SelectedIndex] = tabViewItem;
-                ApplicationView.GetForCurrentView().Title = tabViewItem.Header.ToString();
-                //ActiveTabContent = tabViewItem.TabContent;
+                AppData.CustomTabViewItems[AppData.SelectedIndex] = customTabViewItem;
+                MyTabView.Items[MyTabView.SelectedIndex] = customTabViewItem.TabItem;
                 _tickEvent.Triger(() =>
                 {
                     MyTabView.SelectedIndex = AppData.SelectedIndex;
@@ -217,29 +214,28 @@ namespace NewTestamentEnArm.Views
         private void Items_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var addedItem = e.AddedItems.FirstOrDefault();
-            if (addedItem is CustomTabViewItem addedTabItem)
+            if (addedItem is TabViewItem addedTabItem)
             {
-                ActiveTabContent = addedTabItem.TabContent;
-                AppData.SetSelectedChapter(addedTabItem.Chapter);
+                Debug.Assert(MyTabView.SelectedIndex == AppData.SelectedIndex);
+                AppData.SetSelectedItem(addedTabItem);
                 ApplicationView.GetForCurrentView().Title = addedTabItem.Header.ToString();
-                Dbg.d("chapter.ID " + addedTabItem.Chapter.Id);
+                ActiveTabContent = AppData.CustomTabViewItems[AppData.SelectedIndex].TabContent;
             }
         }
         private void TabClosing(object sender, TabClosingEventArgs e)
         {
-            if (AppData.Chapters.Count == 1)
+            if (AppData.ChapterCount() == 1)
             {
                 AppData.SaveChapters();
                 CoreApplication.Exit();
             }
-            else if (e.Item is CustomTabViewItem closedTabItem)
+            else if (e.Item is TabViewItem closedTabItem)
             {
-                Chapter selectedChapter = AppData.SelectedChapter;
-                bool selectedClosed = (closedTabItem.Chapter == selectedChapter);
-                AppData.RemoveChapter(closedTabItem.Chapter);
+                bool selectedClosed = (AppData.CustomTabViewItems[AppData.SelectedIndex].TabItem == closedTabItem);
+                AppData.RemoveChapter(closedTabItem);
                 if (!selectedClosed)
                 {
-                    AppData.SetSelectedChapter(selectedChapter); //updtae SelectedIndex
+                    AppData.SetSelectedItem(closedTabItem);
                 }
             }
         }
