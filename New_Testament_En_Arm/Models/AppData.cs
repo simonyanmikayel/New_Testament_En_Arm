@@ -84,6 +84,7 @@ namespace NewTestamentEnArm.Models
         }
         private static void LoadChapters()
         {
+            //LocalSettings.Values.Remove("chapter"); //!!!
             Windows.Storage.ApplicationDataCompositeValue composite = (ApplicationDataCompositeValue)LocalSettings.Values["chapter"];
             if (composite != null)
             {

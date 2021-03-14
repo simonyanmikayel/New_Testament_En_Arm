@@ -8,6 +8,7 @@ using Windows.System.Threading;
 
 namespace Helpers
 {
+    /*
     class ThreadPoolTimerTick
     {
 
@@ -33,4 +34,5 @@ namespace Helpers
             );
         }
     }
+    */
 }

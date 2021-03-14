@@ -13,7 +13,7 @@ namespace NewTestamentEnArm.Helpers
         static int _logNN;
         static StringBuilder _dbgStringBuilder = new StringBuilder();
 #endif
-        public static void d(Object trace = null,
+        public static void d(Object trace = null, bool showDate = true,
             [System.Runtime.CompilerServices.CallerMemberName] string memberName = "",
             [System.Runtime.CompilerServices.CallerLineNumber] int sourceLineNumber = 0)
         {
@@ -23,11 +23,21 @@ namespace NewTestamentEnArm.Helpers
             _dbgStringBuilder.Append(": ");
             _dbgStringBuilder.Append("-> ");
             _dbgStringBuilder.Append(memberName);
-            _dbgStringBuilder.Append('[');
+            _dbgStringBuilder.Append(':');
             _dbgStringBuilder.Append(sourceLineNumber);
-            _dbgStringBuilder.Append(":] ");
+            _dbgStringBuilder.Append('[');
+            _dbgStringBuilder.Append(System.Threading.Thread.CurrentThread.ManagedThreadId);
+            _dbgStringBuilder.Append(']');
+            if (showDate)
+            {
+                _dbgStringBuilder.Append('[');
+                _dbgStringBuilder.Append(DateTime.Now.ToString("H.mm.ss:fff"));
+                _dbgStringBuilder.Append(']');
+            }
+            _dbgStringBuilder.Append(" :] ");
             if (trace != null)
                 _dbgStringBuilder.Append(trace.ToString());
+            _dbgStringBuilder.Append('\n');
             Debug.WriteLine(_dbgStringBuilder.ToString());
 #endif
         } 

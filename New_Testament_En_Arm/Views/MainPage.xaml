@@ -82,7 +82,7 @@
         <Grid x:Name="AppTitleBar"
               Background="Transparent"
               Grid.ColumnSpan="3"
-              animations:Implicit.ShowAnimations="{StaticResource TitleShowAnimation}">
+              animations:Implicit.ShowAnimations="{StaticResource TitleShowAnimation}"> 
             <Grid.ColumnDefinitions>
                 <ColumnDefinition x:Name="LeftPaddingColumn" Width="0"/>
                 <ColumnDefinition/>
@@ -246,10 +246,11 @@
         <StackPanel 
             x:Name="WelcomeBubble"
             Grid.Column="1"
+            Grid.Row="1"
             Visibility="Collapsed"
             Orientation="Horizontal"
             HorizontalAlignment="Left"
-            Margin="40,40,0,0">
+            Margin="40,0,0,0">
             
             <Polygon 
                 Points="0,0 35,25 35,65"

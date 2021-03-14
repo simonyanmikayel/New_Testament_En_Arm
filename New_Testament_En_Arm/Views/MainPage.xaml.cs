@@ -165,7 +165,8 @@ namespace NewTestamentEnArm.Views
 
         #region Tab items
         TabContent _ActiveTabContent;
-        public TabContent ActiveTabContent { 
+        public TabContent ActiveTabContent 
+        { 
             get
             {
                 return _ActiveTabContent;
@@ -189,36 +190,42 @@ namespace NewTestamentEnArm.Views
                 WelcomeBubble.Visibility = Visibility.Collapsed;
                 AddTabButton.Visibility = Visibility.Visible;
             }
-            Chapter chapter = new Chapter(bookNumber, chapterNumber, paragraphNumber);
-            CustomTabViewItem customTabViewItem = new CustomTabViewItem(chapter);
-            if (newTab || AppData.ChapterCount() == 0)
+            _tickEvent.Triger(() =>
             {
-                AppData.AddChapter(customTabViewItem);
-                AppData.SetSelectedItem(customTabViewItem.TabItem);
-                MyTabView.Items.Add(customTabViewItem.TabItem);
-                _tickEvent.Triger(() =>
+                Chapter chapter = new Chapter(bookNumber, chapterNumber, paragraphNumber);
+                CustomTabViewItem customTabViewItem = new CustomTabViewItem(chapter);
+                if (newTab || AppData.ChapterCount() == 0)
                 {
-                    MyTabView.SelectedIndex = MyTabView.Items.Count - 1;
-                });
-            }
-            else
-            {
-                AppData.CustomTabViewItems[AppData.SelectedIndex] = customTabViewItem;
-                MyTabView.Items[MyTabView.SelectedIndex] = customTabViewItem.TabItem;
-                _tickEvent.Triger(() =>
+                    AppData.AddChapter(customTabViewItem);
+                    AppData.SetSelectedItem(customTabViewItem.TabItem);
+                    MyTabView.Items.Add(customTabViewItem.TabItem);
+                    _tickEvent.Triger(() =>
+                    {
+                        MyTabView.SelectedIndex = MyTabView.Items.Count - 1;
+                    }, 3, "Set index 1");
+                }
+                else
                 {
-                    MyTabView.SelectedIndex = AppData.SelectedIndex;
-                });
-            }
+                    AppData.CustomTabViewItems[AppData.SelectedIndex] = customTabViewItem;
+                    MyTabView.Items[MyTabView.SelectedIndex] = customTabViewItem.TabItem;
+                    _tickEvent.Triger(() =>
+                    {
+                        MyTabView.SelectedIndex = AppData.SelectedIndex;
+                    }, 3, "Set index 2");
+                }
+            }, 3, "SetTabItem");
         }
         private void Items_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var addedItem = e.AddedItems.FirstOrDefault();
             if (addedItem is TabViewItem addedTabItem)
             {
-                AppData.SetSelectedItem(addedTabItem);
-                ApplicationView.GetForCurrentView().Title = addedTabItem.Header.ToString();
-                ActiveTabContent = AppData.CustomTabViewItems[AppData.SelectedIndex].TabContent;
+                _tickEvent.Triger(() =>
+                {
+                    AppData.SetSelectedItem(addedTabItem);
+                    ApplicationView.GetForCurrentView().Title = addedTabItem.Header.ToString();
+                    ActiveTabContent = AppData.CustomTabViewItems[AppData.SelectedIndex].TabContent;
+                }, 1, "Items_SelectionChanged");
             }
         }
         private void TabClosing(object sender, TabClosingEventArgs e)
