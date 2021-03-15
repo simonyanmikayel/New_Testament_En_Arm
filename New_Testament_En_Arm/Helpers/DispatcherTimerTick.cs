@@ -40,13 +40,19 @@ namespace Helpers
         public void Triger(OnTick onTick, int tickCount = 1, String description = "")
         {
             dataList.Add(new DispatcherTimerData(onTick, tickCount, description));
-            if (dataList.Count == 1)
+            if (!_timer.IsEnabled)
                 _timer.Start();
         }
 
         //private async void Timer_Elapsed(object sender, EventArgs e)
         private void dispatcherTimer_Tick(object sender, object e)
         {
+            if (dataList.Count == 0)
+            {
+                //never should happen
+                _timer.Stop();
+                return;
+            }
             DispatcherTimerData data = dataList[0];
             if (--(data.tickCount) > 0)
                 return;
